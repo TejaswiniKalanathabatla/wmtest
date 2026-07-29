@@ -1,0 +1,138 @@
+{
+  "container": {
+    "appearances": {
+      "search-panel": {
+        "mapping": {
+          "background": { "value": "{color.white.@.value}", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.1.value}", "type": "space" },
+            "style": { "value": "solid", "type": "radius" },
+            "color": { "value": "{color.outline.variant.value}", "type": "color" },
+            "radius": { "value": "{radius.sm.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "search-body": {
+        "mapping": {
+          "background": { "value": "#F3F4F6ff", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.sm.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "table-panel": {
+        "mapping": {
+          "background": { "value": "{color.white.@.value}", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.1.value}", "type": "space" },
+            "style": { "value": "solid", "type": "radius" },
+            "color": { "value": "{color.outline.variant.value}", "type": "color" },
+            "radius": { "value": "{radius.sm.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "header-user": {
+        "mapping": {
+          "background": { "value": "{color.transparent.value}", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.sm.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "notif-badge": {
+        "mapping": {
+          "background": { "value": "{color.error.@.value}", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.pill.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "panel-card": {
+        "mapping": {
+          "background": { "value": "{color.white.@.value}", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.1.value}", "type": "space" },
+            "style": { "value": "solid", "type": "radius" },
+            "color": { "value": "{color.outline.variant.value}", "type": "color" },
+            "radius": { "value": "{radius.sm.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "ttm": {
+        "mapping": {
+          "background": { "value": "#F3F4F6ff", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.xs.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "wizard-left-panel": {
+        "mapping": {
+          "background": { "value": "#F5F3FEff", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.none.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "bank-icon-circle": {
+        "mapping": {
+          "background": { "value": "#E5E7EBff", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.circle.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "wizard-content": {
+        "mapping": {
+          "background": { "value": "{color.white.@.value}", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.none.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      },
+      "wizard-footer-bar": {
+        "mapping": {
+          "background": { "value": "{color.white.@.value}", "type": "color" },
+          "border": {
+            "width": { "value": "1px 0 0 0", "type": "space" },
+            "style": { "value": "solid", "type": "radius" },
+            "color": { "value": "{color.outline.variant.value}", "type": "color" },
+            "radius": { "value": "{radius.none.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      }
+    }
+  }
+}

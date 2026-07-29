@@ -1,0 +1,170 @@
+{
+  "accountStatusOptions" : {
+    "_id" : "wm-accountStatusOptions-wm.Variable-1783923065215",
+    "name" : "accountStatusOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "Active",
+      "value" : "Active"
+    }, {
+      "label" : "Inactive",
+      "value" : "Inactive"
+    }, {
+      "label" : "Suspended",
+      "value" : "Suspended"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "accountTypeOptions" : {
+    "_id" : "wm-accountTypeOptions-wm.Variable-1783923065217",
+    "name" : "accountTypeOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "All", "Savings", "Checking", "Credit" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "branchOptions" : {
+    "_id" : "wm-branchOptions-wm.Variable-1783923065224",
+    "name" : "branchOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "All", "Orion Springfield", "Brisbane Central", "Sydney North" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "customersData" : {
+    "_id" : "wm-customersData-wm.Variable-1783923065207",
+    "name" : "customersData",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "firstName" : "Rodney Neymer",
+      "customerId" : "ID 10-3456-18",
+      "phone" : "7-128910839",
+      "email" : "rodney.franklin@gmail.com",
+      "customerValue" : "$78,567.89",
+      "customerTrend" : "Increased",
+      "branch" : "Orion Springfiel",
+      "branchCity" : "Brisbane",
+      "accountsCount" : "02",
+      "relationshipManager" : "MThompson",
+      "managerCity" : "Brisbane",
+      "accountStatus" : "1 Active",
+      "accountStatus2" : "1 Suspended"
+    }, {
+      "firstName" : "Simmons",
+      "customerId" : "ID 10-3786-23",
+      "phone" : "7-128910839",
+      "email" : "simmons.091@gmail.com",
+      "customerValue" : "$12,227.32",
+      "customerTrend" : "Decreased",
+      "branch" : "Orion Springfiel",
+      "branchCity" : "Brisbane",
+      "accountsCount" : "03",
+      "relationshipManager" : "MThompson",
+      "managerCity" : "Brisbane",
+      "accountStatus" : "1 Active",
+      "accountStatus2" : "1 Inactive"
+    }, {
+      "firstName" : "Ram Senaxi",
+      "customerId" : "ID 10-3786-23",
+      "phone" : "7-128910839",
+      "email" : "ram.sen@gmail.com",
+      "customerValue" : "$89,567.89",
+      "customerTrend" : "Increased",
+      "branch" : "Orion Springfiel",
+      "branchCity" : "Brisbane",
+      "accountsCount" : "01",
+      "relationshipManager" : "MThompson",
+      "managerCity" : "Brisbane",
+      "accountStatus" : "1 Active",
+      "accountStatus2" : ""
+    }, {
+      "firstName" : "Sam Billings",
+      "customerId" : "ID 10-3786-23",
+      "phone" : "7-128910839",
+      "email" : "sam.bill.09@gmail.com",
+      "customerValue" : "$12,567.89",
+      "customerTrend" : "Increased",
+      "branch" : "Orion Springfiel",
+      "branchCity" : "Brisbane",
+      "accountsCount" : "02",
+      "relationshipManager" : "MThompson",
+      "managerCity" : "Brisbane",
+      "accountStatus" : "1 Active",
+      "accountStatus2" : ""
+    }, {
+      "firstName" : "Rogers Denim",
+      "customerId" : "ID 10-3786-23",
+      "phone" : "7-128910839",
+      "email" : "rogers.denim99@gmail.com",
+      "customerValue" : "$78,567.89",
+      "customerTrend" : "Decreased",
+      "branch" : "Orion Springfiel",
+      "branchCity" : "Brisbane",
+      "accountsCount" : "05",
+      "relationshipManager" : "MThompson",
+      "managerCity" : "Brisbane",
+      "accountStatus" : "1 Active",
+      "accountStatus2" : ""
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "customersQueryData" : {
+    "_id" : "wm-customersQueryData-wm.ServiceVariable-1783925285437",
+    "name" : "customersQueryData",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.wavemaker.teller_app.teller_db.models.query.GetCustomerListDataResponse",
+    "service" : "teller_db",
+    "operation" : "executeGetCustomerListData",
+    "operationId" : "QueryExecutionController_executeGetCustomerListData",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "controller" : "QueryExecution"
+  },
+  "showSearch" : {
+    "_id" : "wm-showSearch-wm.Variable-1783923065227",
+    "name" : "showSearch",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : false
+    },
+    "type" : "boolean",
+    "isList" : false,
+    "twoWayBinding" : true
+  },
+  "yearOptions" : {
+    "_id" : "wm-yearOptions-wm.Variable-1783923065226",
+    "name" : "yearOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "2020", "2021", "2022", "2023", "2024" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  }
+}

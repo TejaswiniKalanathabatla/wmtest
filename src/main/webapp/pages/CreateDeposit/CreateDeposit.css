@@ -1,0 +1,100 @@
+
+.step-bank-icon {
+font-size: 28px;
+color: #6B7280;
+}
+
+.step-row {
+margin: 0;
+padding: 0;
+}
+
+.step-circle {
+border-radius: 50%;
+flex-shrink: 0;
+}
+
+.step-circle-active {
+border-radius: 50%;
+background-color: #1D4ED8;
+flex-shrink: 0;
+}
+
+.step-circle-completed {
+border-radius: 50%;
+background-color: #16A34A;
+flex-shrink: 0;
+}
+
+.step-circle-upcoming {
+border-radius: 50%;
+background-color: #E5E7EB;
+flex-shrink: 0;
+}
+
+.step-num-label {
+font-size: 13px;
+font-weight: 700;
+color: #FFFFFF;
+line-height: 1;
+margin: 0;
+padding: 0;
+}
+
+.step-check-icon {
+font-size: 14px;
+color: #FFFFFF;
+}
+
+.step-label-active {
+font-size: 14px;
+font-weight: 700;
+color: #1D4ED8;
+}
+
+.step-label-completed {
+font-size: 14px;
+font-weight: 600;
+color: #16A34A;
+}
+
+.step-label-upcoming {
+font-size: 14px;
+font-weight: 400;
+color: #9CA3AF;
+}
+
+.step-connector {
+padding-left: 15px;
+}
+
+.step-connector-line {
+background-color: #D1D5DB;
+border-radius: 2px;
+margin: 0 auto;
+}
+
+.step-connector-line-completed {
+background-color: #16A34A;
+border-radius: 2px;
+margin: 0 auto;
+}
+
+/* Compact form fields */
+.page.CreateDeposit .app-form-field label,
+.page.CreateDeposit .form-group label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 4px;
+}
+.page.CreateDeposit .form-control,
+.page.CreateDeposit select.form-control {
+    height: 32px;
+    font-size: 13px;
+    padding: 4px 8px;
+}
+.page.CreateDeposit .radio label {
+    font-size: 13px;
+}
+

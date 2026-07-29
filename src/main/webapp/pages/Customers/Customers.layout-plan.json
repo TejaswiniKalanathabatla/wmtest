@@ -1,0 +1,99 @@
+{
+  "page": "Customers",
+  "widgetTree": [
+    {
+      "widget": "wm-page", "name": "Customers",
+      "children": [
+        { "widget": "wm-left-panel", "name": "leftpanel", "props": { "content": "customersLeftnav", "navtype": "rail", "navheight": "full" } },
+        { "widget": "wm-content", "name": "content",
+          "children": [
+            { "widget": "wm-header", "name": "header", "props": { "content": "customersHeader", "height": "60px" } },
+            { "widget": "wm-page-content", "name": "page_content",
+              "children": [
+                { "widget": "wm-container", "name": "root", "props": { "direction": "column", "gap": "0", "width": "fill", "height": "hug" },
+                  "children": [
+                    { "widget": "wm-container", "name": "search_section", "props": { "direction": "column", "gap": "0", "width": "fill", "height": "hug", "class": "container-search-panel", "variant": "search-panel" },
+                      "children": [
+                        { "widget": "wm-container", "name": "search_header", "props": { "direction": "row", "gap": "auto", "alignment": "center", "width": "fill", "height": "hug", "padding": "12px 20px", "on-click": "toggleSearch($event, widget)" },
+                          "children": [
+                            { "widget": "wm-container", "name": "search_header_left", "props": { "direction": "row", "gap": "8", "alignment": "middle-left", "width": "hug", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-label", "name": "search_title", "props": { "caption": "Search", "class": "label-search-title", "variant": "search-title" } },
+                                { "widget": "wm-label", "name": "search_hint", "props": { "caption": "Define your search criteria to see results", "class": "label-search-hint", "variant": "search-hint" } },
+                                { "widget": "wm-label", "name": "search_result_count", "props": { "caption": "0 results", "class": "label-search-count", "variant": "search-count" } }
+                              ]
+                            },
+                            { "widget": "wm-button", "name": "search_toggle", "props": { "caption": "", "iconclass": "bind:searchChevronIcon()", "class": "btn-icon-plain", "variant": "icon-plain" } }
+                          ]
+                        },
+                        { "widget": "wm-container", "name": "search_body", "props": { "show": "bind:Variables.showSearch.dataSet", "direction": "column", "gap": "16", "width": "fill", "height": "hug", "padding": "8px 20px 20px 20px", "class": "container-search-body", "variant": "search-body" },
+                          "children": [
+                            { "widget": "wm-form", "name": "searchForm", "props": { "captionposition": "top", "novalidate": "true" },
+                              "children": [
+                                { "widget": "wm-container", "name": "search_row1", "props": { "direction": "row", "gap": "16", "width": "fill", "height": "hug", "alignment": "top-left" },
+                                  "children": [
+                                    { "widget": "wm-form-field", "name": "ff_firstName", "props": { "widget": "text", "displayname": "Customer First Name", "placeholder": "Enter customer first name", "width": "25%" } },
+                                    { "widget": "wm-form-field", "name": "ff_lastName", "props": { "widget": "text", "displayname": "Customer Last Name", "placeholder": "Enter customer last name", "width": "25%" } },
+                                    { "widget": "wm-form-field", "name": "ff_branch", "props": { "widget": "select", "displayname": "Branch", "placeholder": "All", "width": "25%" } },
+                                    { "widget": "wm-form-field", "name": "ff_accountType", "props": { "widget": "select", "displayname": "Account Type", "placeholder": "All", "width": "25%" } }
+                                  ]
+                                },
+                                { "widget": "wm-container", "name": "search_row2", "props": { "direction": "row", "gap": "16", "width": "fill", "height": "hug", "alignment": "top-left" },
+                                  "children": [
+                                    { "widget": "wm-form-field", "name": "ff_activationFrom", "props": { "widget": "select", "displayname": "Acc. Activation From", "placeholder": "Select year", "width": "25%" } },
+                                    { "widget": "wm-form-field", "name": "ff_activationTo", "props": { "widget": "select", "displayname": "Acc. Activation To", "placeholder": "Select year", "width": "25%" } },
+                                    { "widget": "wm-form-field", "name": "ff_accountStatus", "props": { "widget": "checkboxset", "displayname": "Account Status", "width": "50%" } }
+                                  ]
+                                },
+                                { "widget": "wm-form-action", "name": "clear_action", "props": { "caption": "Clear", "class": "btn-outlined-clear", "variant": "outlined-clear" } },
+                                { "widget": "wm-form-action", "name": "search_action", "props": { "caption": "Search", "class": "btn-cta-orange", "variant": "cta-orange" } }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    { "widget": "wm-container", "name": "table_section", "props": { "direction": "column", "gap": "0", "width": "fill", "height": "hug", "class": "container-table-panel", "variant": "table-panel" },
+                      "children": [
+                        { "widget": "wm-table", "name": "customersTable", "props": { "dataset": "bind:Variables.customersData.dataSet", "navigation": "Basic", "pagesize": "5", "enablesort": "true" },
+                          "children": [
+                            { "widget": "wm-table-column", "name": "col_customer_name", "props": { "binding": "firstName", "caption": "Customer Name", "type": "string", "sortable": "true" } },
+                            { "widget": "wm-table-column", "name": "col_contact", "props": { "binding": "phone", "caption": "Contact", "type": "string", "sortable": "true" } },
+                            { "widget": "wm-table-column", "name": "col_customer_value", "props": { "binding": "customerValue", "caption": "Customer Value", "type": "string", "sortable": "true" } },
+                            { "widget": "wm-table-column", "name": "col_branch", "props": { "binding": "branch", "caption": "Branch", "type": "string", "sortable": "true" } },
+                            { "widget": "wm-table-column", "name": "col_accounts", "props": { "binding": "accountsCount", "caption": "No.of Accounts", "type": "string", "sortable": "true" } },
+                            { "widget": "wm-table-column", "name": "col_manager", "props": { "binding": "relationshipManager", "caption": "Relationship Manager", "type": "string", "sortable": "true" } },
+                            { "widget": "wm-table-column", "name": "col_status", "props": { "binding": "accountStatus", "caption": "Account Status", "type": "string", "sortable": "true" } }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": [
+    { "name": "showSearch", "type": "boolean", "isList": false, "boundWidget": "search_body" },
+    { "name": "customersData", "type": "entry", "isList": true, "boundWidget": "customersTable" },
+    { "name": "branchOptions", "type": "string", "isList": true, "boundWidget": "ff_branch" },
+    { "name": "accountTypeOptions", "type": "string", "isList": true, "boundWidget": "ff_accountType" },
+    { "name": "yearOptions", "type": "string", "isList": true, "boundWidget": "ff_activationFrom" },
+    { "name": "accountStatusOptions", "type": "entry", "isList": true, "boundWidget": "ff_accountStatus" }
+  ],
+  "interactions": [
+    {
+      "type": "toggle",
+      "trigger": "search_header",
+      "toggleBtn": "search_toggle",
+      "target": "search_body",
+      "variable": "showSearch",
+      "handler": "toggleSearch",
+      "defaultExpanded": true
+    }
+  ]
+}

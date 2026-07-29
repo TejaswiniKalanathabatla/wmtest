@@ -1,0 +1,581 @@
+{
+  "GetAccountDetailsByCustomer" : {
+    "name" : "GetAccountDetailsByCustomer",
+    "description" : "Get all accounts for a customer along with branch info, branch address, and manager info",
+    "version" : "V2",
+    "queryString" : "SELECT ac.id, ac.account_number, ac.type, ac.status, ac.activated_from, ac.activate_to, b.name AS branch_name, b.code AS branch_code, ba.address1 AS branch_address1, ba.city AS branch_city, ba.state AS branch_state, ba.pin AS branch_pin, m.name AS manager_name, m.manager_id AS manager_id FROM account ac JOIN customer c ON ac.customer_id = c.customer_id LEFT JOIN branch b ON ac.branch_id = b.id LEFT JOIN address ba ON b.address_id = ba.id LEFT JOIN manager m ON ac.manager_id = m.manager_id WHERE c.id = :customerId",
+    "countQueryString" : "select count(*) from (SELECT ac.id, ac.account_number, ac.type, ac.status, ac.activated_from, ac.activate_to, b.name AS branch_name, b.code AS branch_code, ba.address1 AS branch_address1, ba.city AS branch_city, ba.state AS branch_state, ba.pin AS branch_pin, m.name AS manager_name, m.manager_id AS manager_id FROM account ac JOIN customer c ON ac.customer_id = c.customer_id LEFT JOIN branch b ON ac.branch_id = b.id LEFT JOIN address ba ON b.address_id = ba.id LEFT JOIN manager m ON ac.manager_id = m.manager_id WHERE c.id = :customerId) wmTempTable",
+    "offlineQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "customerId",
+      "type" : "integer",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : null,
+      "testValue" : null,
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.wavemaker.teller_app.teller_db.models.query.GetAccountDetailsByCustomerResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "account_number",
+        "fieldName" : "accountNumber",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "type",
+        "fieldName" : "type",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "status",
+        "fieldName" : "status",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "activated_from",
+        "fieldName" : "activatedFrom",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "activate_to",
+        "fieldName" : "activateTo",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branch_name",
+        "fieldName" : "branchName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branch_code",
+        "fieldName" : "branchCode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branch_address1",
+        "fieldName" : "branchAddress1",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branch_city",
+        "fieldName" : "branchCity",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branch_state",
+        "fieldName" : "branchState",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branch_pin",
+        "fieldName" : "branchPin",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "manager_name",
+        "fieldName" : "managerName",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "manager_id",
+        "fieldName" : "managerId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "GetCustomerDetails" : {
+    "name" : "GetCustomerDetails",
+    "description" : "Get all customer info plus address details using customer primary key id",
+    "version" : "V2",
+    "queryString" : "SELECT c.id, c.customer_id, c.first_name AS firstname, c.last_name As lastname, c.phone, c.email, c.id_proof, c.resident_status, c.time_zone, c.created_at, a.city, a.address1, a.address2, a.state, a.pin FROM customer c LEFT JOIN address a ON c.address_id = a.id WHERE c.id = :customerId",
+    "countQueryString" : "select count(*) from (SELECT c.id, c.customer_id, c.first_name AS firstname, c.last_name As lastname, c.phone, c.email, c.id_proof, c.resident_status, c.time_zone, c.created_at, a.city, a.address1, a.address2, a.state, a.pin FROM customer c LEFT JOIN address a ON c.address_id = a.id WHERE c.id = :customerId) wmTempTable",
+    "offlineQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "customerId",
+      "type" : "integer",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : 1,
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.wavemaker.teller_app.teller_db.models.query.GetCustomerDetailsResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "customer_id",
+        "fieldName" : "customerId",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "firstname",
+        "fieldName" : "firstname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "lastname",
+        "fieldName" : "lastname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "phone",
+        "fieldName" : "phone",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "email",
+        "fieldName" : "email",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "id_proof",
+        "fieldName" : "idProof",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "resident_status",
+        "fieldName" : "residentStatus",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "time_zone",
+        "fieldName" : "timeZone",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "created_at",
+        "fieldName" : "createdAt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.time.LocalDateTime",
+          "list" : false
+        }
+      }, {
+        "name" : "city",
+        "fieldName" : "city",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "address1",
+        "fieldName" : "address1",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "address2",
+        "fieldName" : "address2",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "state",
+        "fieldName" : "state",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "pin",
+        "fieldName" : "pin",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "GetDepositAccountsByCustomer" : {
+    "name" : "GetDepositAccountsByCustomer",
+    "description" : "Get all deposit accounts linked to a customer's accounts",
+    "version" : "V2",
+    "queryString" : "SELECT da.id, da.term_deposit, da.maturity_amount, da.rate_of_interest, da.deposited_at, da.matured_at, da.status, ac.account_number, ac.type AS account_type FROM deposit_account da JOIN account ac ON da.account_number = ac.account_number JOIN customer c ON ac.customer_id = c.customer_id WHERE c.id = :customerId",
+    "countQueryString" : "select count(*) from (SELECT da.id, da.term_deposit, da.maturity_amount, da.rate_of_interest, da.deposited_at, da.matured_at, da.status, ac.account_number, ac.type AS account_type FROM deposit_account da JOIN account ac ON da.account_number = ac.account_number JOIN customer c ON ac.customer_id = c.customer_id WHERE c.id = :customerId) wmTempTable",
+    "offlineQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "customerId",
+      "type" : "integer",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : null,
+      "testValue" : 1,
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.wavemaker.teller_app.teller_db.models.query.GetDepositAccountsByCustomerResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "id",
+        "fieldName" : "id",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "term_deposit",
+        "fieldName" : "termDeposit",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Double",
+          "list" : false
+        }
+      }, {
+        "name" : "maturity_amount",
+        "fieldName" : "maturityAmount",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Double",
+          "list" : false
+        }
+      }, {
+        "name" : "rate_of_interest",
+        "fieldName" : "rateOfInterest",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Double",
+          "list" : false
+        }
+      }, {
+        "name" : "deposited_at",
+        "fieldName" : "depositedAt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.sql.Date",
+          "list" : false
+        }
+      }, {
+        "name" : "matured_at",
+        "fieldName" : "maturedAt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.sql.Date",
+          "list" : false
+        }
+      }, {
+        "name" : "status",
+        "fieldName" : "status",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "account_number",
+        "fieldName" : "accountNumber",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "account_type",
+        "fieldName" : "accountType",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "getCustomerListData" : {
+    "name" : "getCustomerListData",
+    "description" : "Returns one row per customer with aggregated total balance (SUM), account count (COUNT), and account status summary (GROUP_CONCAT), joined with branch, address, and manager details.",
+    "version" : "V2",
+    "queryString" : "SELECT c.id AS customerid, c.customer_id AS customercode, c.first_name AS firstname, c.last_name AS lastname, c.phone AS phone, c.email AS email, COALESCE(SUM(b.current_balance), 0) AS totalbalance, br.name AS branchname, br_addr.city AS branchcity, COUNT(a.id) AS accountcount, m.name AS managername, m_br_addr.city AS managercity, GROUP_CONCAT(DISTINCT CONCAT(status_counts.cnt, ' ', status_counts.status) ORDER BY status_counts.status SEPARATOR ', ') AS accountstatussummary FROM customer c LEFT JOIN account a ON a.customer_id = c.customer_id LEFT JOIN balance b ON b.account_number = a.account_number LEFT JOIN branch br ON br.id = a.branch_id LEFT JOIN address br_addr ON br_addr.id = br.address_id LEFT JOIN manager m ON m.manager_id = a.manager_id LEFT JOIN branch m_br ON m_br.id = m.branch_id LEFT JOIN address m_br_addr ON m_br_addr.id = m_br.address_id LEFT JOIN (SELECT a2.customer_id, a2.status, COUNT(*) AS cnt FROM account a2 GROUP BY a2.customer_id, a2.status) status_counts ON status_counts.customer_id = c.customer_id GROUP BY c.id, c.customer_id, c.first_name, c.last_name, c.phone, c.email, br.name, br_addr.city, m.name, m_br_addr.city",
+    "countQueryString" : "select count(*) from (SELECT c.id AS customerid, c.customer_id AS customercode, c.first_name AS firstname, c.last_name AS lastname, c.phone AS phone, c.email AS email, COALESCE(SUM(b.current_balance), 0) AS totalbalance, br.name AS branchname, br_addr.city AS branchcity, COUNT(a.id) AS accountcount, m.name AS managername, m_br_addr.city AS managercity, GROUP_CONCAT(DISTINCT CONCAT(status_counts.cnt, ' ', status_counts.status) ORDER BY status_counts.status SEPARATOR ', ') AS accountstatussummary FROM customer c LEFT JOIN account a ON a.customer_id = c.customer_id LEFT JOIN balance b ON b.account_number = a.account_number LEFT JOIN branch br ON br.id = a.branch_id LEFT JOIN address br_addr ON br_addr.id = br.address_id LEFT JOIN manager m ON m.manager_id = a.manager_id LEFT JOIN branch m_br ON m_br.id = m.branch_id LEFT JOIN address m_br_addr ON m_br_addr.id = m_br.address_id LEFT JOIN (SELECT a2.customer_id, a2.status, COUNT(*) AS cnt FROM account a2 GROUP BY a2.customer_id, a2.status) status_counts ON status_counts.customer_id = c.customer_id GROUP BY c.id, c.customer_id, c.first_name, c.last_name, c.phone, c.email, br.name, br_addr.city, m.name, m_br_addr.city) wmTempTable",
+    "offlineQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.wavemaker.teller_app.teller_db.models.query.GetCustomerListDataResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "customerid",
+        "fieldName" : "customerid",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "customercode",
+        "fieldName" : "customercode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "firstname",
+        "fieldName" : "firstname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "lastname",
+        "fieldName" : "lastname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "phone",
+        "fieldName" : "phone",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "email",
+        "fieldName" : "email",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "totalbalance",
+        "fieldName" : "totalbalance",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.math.BigDecimal",
+          "list" : false
+        }
+      }, {
+        "name" : "branchname",
+        "fieldName" : "branchname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "branchcity",
+        "fieldName" : "branchcity",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "accountcount",
+        "fieldName" : "accountcount",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Long",
+          "list" : false
+        }
+      }, {
+        "name" : "managername",
+        "fieldName" : "managername",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "managercity",
+        "fieldName" : "managercity",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "accountstatussummary",
+        "fieldName" : "accountstatussummary",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  }
+}

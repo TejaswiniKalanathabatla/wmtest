@@ -1,0 +1,377 @@
+{
+  "accountTypeOptions" : {
+    "_id" : "wm-accountTypeOptions-wm.Variable-1784024876786",
+    "name" : "accountTypeOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "key" : "Single",
+      "label" : "Single"
+    }, {
+      "key" : "Joint",
+      "label" : "Joint"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "classOptions" : {
+    "_id" : "wm-classOptions-wm.Variable-1784024876827",
+    "name" : "classOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "Class 1", "Class 2", "Class 3" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "currentStep" : {
+    "_id" : "wm-currentStep-wm.Variable-1784643030467",
+    "name" : "currentStep",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : 1
+    },
+    "type" : "integer",
+    "isList" : false,
+    "twoWayBinding" : false
+  },
+  "custAccountTypeOptions" : {
+    "_id" : "wm-custAccountTypeOptions-wm.Variable-1784024876805",
+    "name" : "custAccountTypeOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "key" : "Single",
+      "label" : "Single"
+    }, {
+      "key" : "Joint",
+      "label" : "Joint"
+    }, {
+      "key" : "Minor",
+      "label" : "Minor"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "depositFormData" : {
+    "_id" : "wm-depositFormData-wm.Variable-1784024876831",
+    "name" : "depositFormData",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : {
+        "branch" : "Orion Springfield",
+        "branchCode" : "ANZ-OSB422415",
+        "subBranch" : "Orion Springfield",
+        "accountType" : "Single",
+        "modeOfOperation" : "",
+        "accountClass" : "Class 1",
+        "firstName" : "Savanah",
+        "lastName" : "Hewitt",
+        "accountNumber" : "1180-4572-7721",
+        "customerId" : "1122331114",
+        "applicationBranch" : "Orion Springfield",
+        "appBranchCode" : "ANZ-OSB422415",
+        "relationshipManager" : "Thomson Wayne",
+        "termDepositAmount" : 25000,
+        "maturityDate" : "",
+        "customerAccountType" : "Single"
+      }
+    },
+    "type" : "entry",
+    "isList" : false,
+    "twoWayBinding" : false
+  },
+  "managerOptions" : {
+    "_id" : "wm-managerOptions-wm.Variable-1784024876807",
+    "name" : "managerOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "id" : 1,
+      "name" : "Thomson Wayne"
+    }, {
+      "id" : 2,
+      "name" : "Sarah Miller"
+    }, {
+      "id" : 3,
+      "name" : "David Chen"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "modeOptions" : {
+    "_id" : "wm-modeOptions-wm.Variable-1784024876811",
+    "name" : "modeOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "Single", "Joint", "Either or Survivor", "Anyone or Survivor" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "navToCustomerDetails" : {
+    "_id" : "wm-navToCustomerDetails-wm.NavigationAction-1784024876868",
+    "name" : "navToCustomerDetails",
+    "owner" : "Page",
+    "category" : "wm.NavigationAction",
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:Variables.depositFormData.dataSet.dataValue.customerId",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "pageName" : "CustomerDetails",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "notifyError" : {
+    "_id" : "wm-notifyError-wm.NotificationAction-1784024876815",
+    "name" : "notifyError",
+    "owner" : "Page",
+    "category" : "wm.NotificationAction",
+    "dataBinding" : [ {
+      "target" : "content",
+      "value" : "inline",
+      "type" : "string"
+    }, {
+      "target" : "text",
+      "value" : "Failed to create deposit. Please try again.",
+      "type" : "string"
+    }, {
+      "target" : "duration",
+      "value" : "3000",
+      "type" : "number"
+    }, {
+      "target" : "class",
+      "value" : "Error",
+      "type" : "string"
+    }, {
+      "target" : "toasterPosition",
+      "value" : "top center",
+      "type" : "string"
+    } ],
+    "operation" : "toast"
+  },
+  "notifySuccess" : {
+    "_id" : "wm-notifySuccess-wm.NotificationAction-1784024876829",
+    "name" : "notifySuccess",
+    "owner" : "Page",
+    "category" : "wm.NotificationAction",
+    "dataBinding" : [ {
+      "target" : "content",
+      "value" : "inline",
+      "type" : "string"
+    }, {
+      "target" : "text",
+      "value" : "Deposit account created successfully",
+      "type" : "string"
+    }, {
+      "target" : "duration",
+      "value" : "3000",
+      "type" : "number"
+    }, {
+      "target" : "class",
+      "value" : "Success",
+      "type" : "string"
+    }, {
+      "target" : "toasterPosition",
+      "value" : "top center",
+      "type" : "string"
+    } ],
+    "operation" : "toast"
+  },
+  "selectedAccount" : {
+    "_id" : "wm-selectedAccount-wm.Variable-1784024876788",
+    "name" : "selectedAccount",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : { }
+    },
+    "type" : "entry",
+    "isList" : false,
+    "twoWayBinding" : false
+  },
+  "selectedBalance" : {
+    "_id" : "wm-selectedBalance-wm.Variable-1784024876818",
+    "name" : "selectedBalance",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : {
+        "id" : 0,
+        "currentBalance" : 78567.76,
+        "accountNumber" : ""
+      }
+    },
+    "type" : "entry",
+    "isList" : false,
+    "twoWayBinding" : false
+  },
+  "svcCreateDeposit" : {
+    "_id" : "wm-svcCreateDeposit-wm.ServiceVariable-1784024900005",
+    "name" : "svcCreateDeposit",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "accountId",
+      "value" : "",
+      "type" : "integer"
+    }, {
+      "target" : "termDeposit",
+      "value" : "",
+      "type" : "number"
+    }, {
+      "target" : "rateOfInterest",
+      "value" : "6.5",
+      "type" : "number"
+    }, {
+      "target" : "maturityAmount",
+      "value" : "",
+      "type" : "number"
+    }, {
+      "target" : "depositedAt",
+      "value" : "",
+      "type" : "string"
+    }, {
+      "target" : "maturedAt",
+      "value" : "",
+      "type" : "string"
+    }, {
+      "target" : "depositStatus",
+      "value" : "ACTIVE",
+      "type" : "string"
+    }, {
+      "target" : "currentBalance",
+      "value" : "",
+      "type" : "number"
+    }, {
+      "target" : "balanceId",
+      "value" : "",
+      "type" : "integer"
+    } ],
+    "service" : "depositOrchestrationService",
+    "operationId" : "DepositOrchestrationController_createDeposit",
+    "onSuccess" : "svcCreateDepositonSuccess(variable, data)",
+    "onError" : "svcCreateDepositonError(variable, data)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "spinnerContext" : "",
+    "spinnerMessage" : "Creating deposit..."
+  },
+  "svcGetAccount" : {
+    "_id" : "wm-svcGetAccount-wm.ServiceVariable-1784024900003",
+    "name" : "svcGetAccount",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "",
+      "type" : "integer"
+    } ],
+    "service" : "teller_db",
+    "operationId" : "AccountController_getAccount",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "spinnerContext" : "",
+    "spinnerMessage" : ""
+  },
+  "svcGetAccountDetailsByCustomer" : {
+    "_id" : "wm-svcGetAccountDetailsByCustomer-wm.ServiceVariable-1784711655312",
+    "name" : "svcGetAccountDetailsByCustomer",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:pageParams.customerId",
+      "type" : "integer"
+    }, {
+      "target" : "size",
+      "value" : 20,
+      "type" : "integer"
+    } ],
+    "type" : "com.wavemaker.teller_app.teller_db.models.query.GetAccountDetailsByCustomerResponse",
+    "service" : "teller_db",
+    "operation" : "executeGetAccountDetailsByCustomer",
+    "operationId" : "QueryExecutionController_executeGetAccountDetailsByCustomer",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "controller" : "QueryExecution"
+  },
+  "svcGetBalance" : {
+    "_id" : "wm-svcGetBalance-wm.ServiceVariable-1784024900004",
+    "name" : "svcGetBalance",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "accountNumber",
+      "value" : "",
+      "type" : "string"
+    } ],
+    "service" : "teller_db",
+    "operationId" : "BalanceController_getByAccountNumber",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "spinnerContext" : "",
+    "spinnerMessage" : ""
+  },
+  "svcListAccounts" : {
+    "_id" : "wm-svcListAccounts-wm.ServiceVariable-1784024900002",
+    "name" : "svcListAccounts",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "q",
+      "value" : "bind:'customer.customerId=\\'' + Variables.depositFormData.dataSet.dataValue.customerId + '\\''",
+      "type" : "string"
+    }, {
+      "target" : "size",
+      "value" : "100",
+      "type" : "integer"
+    } ],
+    "service" : "teller_db",
+    "operationId" : "AccountController_findAccounts",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "spinnerContext" : "",
+    "spinnerMessage" : ""
+  },
+  "svcListBranches" : {
+    "_id" : "wm-svcListBranches-wm.ServiceVariable-1784024900001",
+    "name" : "svcListBranches",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "size",
+      "value" : "100",
+      "type" : "integer"
+    } ],
+    "service" : "teller_db",
+    "operationId" : "BranchController_findBranches",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "spinnerContext" : "",
+    "spinnerMessage" : ""
+  }
+}

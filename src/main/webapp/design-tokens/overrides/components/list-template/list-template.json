@@ -1,0 +1,18 @@
+{
+  "list-template": {
+    "appearances": {
+      "account": {
+        "mapping": {
+          "background": { "value": "#F3F4F6ff", "type": "color" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" },
+            "radius": { "value": "{radius.sm.value}", "type": "radius" }
+          },
+          "shadow": { "value": "{elevation.shadow.none.value}", "type": "radius" }
+        }
+      }
+    }
+  }
+}

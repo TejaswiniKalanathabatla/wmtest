@@ -1,0 +1,11 @@
+{
+  "page": "CreateDeposit",
+  "globalOverrides": [],
+  "appearances": [
+    { "component": "container", "name": "wizard-left-panel", "purpose": "gradient left rail with icon and title" },
+    { "component": "container", "name": "bank-icon-circle", "purpose": "circular grey background for bank icon" },
+    { "component": "label", "name": "wizard-title-xl", "purpose": "Open Deposit Account big heading" },
+    { "component": "label", "name": "form-section-heading", "purpose": "Account Details / Customer Details section heading" },
+    { "component": "label", "name": "available-balance", "purpose": "small blue Available Balance helper text" }
+  ]
+}

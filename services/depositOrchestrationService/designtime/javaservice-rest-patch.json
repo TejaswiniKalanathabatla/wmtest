@@ -1,0 +1,154 @@
+{
+  "description" : null,
+  "methods" : {
+    "createDeposit" : [ {
+      "url" : {
+        "value" : "/deposit",
+        "modified" : false
+      },
+      "method" : {
+        "value" : "POST",
+        "modified" : false
+      },
+      "accessSpecifier" : "APP_ONLY",
+      "parameters" : {
+        "accountId" : {
+          "name" : {
+            "value" : "accountId",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "termDeposit" : {
+          "name" : {
+            "value" : "termDeposit",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "rateOfInterest" : {
+          "name" : {
+            "value" : "rateOfInterest",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "maturityAmount" : {
+          "name" : {
+            "value" : "maturityAmount",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "depositedAt" : {
+          "name" : {
+            "value" : "depositedAt",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "maturedAt" : {
+          "name" : {
+            "value" : "maturedAt",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "depositStatus" : {
+          "name" : {
+            "value" : "depositStatus",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "currentBalance" : {
+          "name" : {
+            "value" : "currentBalance",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        },
+        "balanceId" : {
+          "name" : {
+            "value" : "balanceId",
+            "modified" : false
+          },
+          "in" : {
+            "value" : "QUERY",
+            "modified" : false
+          },
+          "required" : {
+            "value" : false,
+            "modified" : false
+          }
+        }
+      },
+      "returnType" : {
+        "type" : {
+          "value" : "com.wavemaker.teller_app.depositorchestrationservice.model.DepositResponse",
+          "modified" : false
+        },
+        "required" : {
+          "value" : true,
+          "modified" : false
+        }
+      }
+    } ]
+  }
+}

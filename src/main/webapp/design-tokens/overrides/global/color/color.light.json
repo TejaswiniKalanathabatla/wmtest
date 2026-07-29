@@ -1,0 +1,32 @@
+{
+  "color": {
+    "outline": {
+      "variant": {
+        "value": "#fff8f8"
+      },
+      "@": {
+        "value": "#9f9494"
+      }
+    },
+    "background": {
+      "@": {
+        "value": "#eadedeff"
+      }
+    },
+    "on-background": {
+      "@": {
+        "value": "#312929"
+      }
+    },
+    "shadow": {
+      "@": {
+        "value": "#cbbfbf"
+      }
+    },
+    "scrim": {
+      "@": {
+        "value": "#eadedeff"
+      }
+    }
+  }
+}

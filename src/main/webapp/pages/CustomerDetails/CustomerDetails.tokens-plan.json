@@ -1,0 +1,19 @@
+{
+  "page": "CustomerDetails",
+  "globalOverrides": [],
+  "appearances": [
+    { "component": "container", "name": "panel-card", "purpose": "White card panel with subtle border and radius for General/Relationship/Spend sections" },
+    { "component": "container", "name": "ttm", "purpose": "Inset light gray card for the Time to Maturity mini-widget" },
+    { "component": "label", "name": "strong", "purpose": "Bold heading label used for customer name" },
+    { "component": "label", "name": "strong-sm", "purpose": "Bold value label for detail fields (Phone value, Location value, etc.)" },
+    { "component": "label", "name": "muted-sm", "purpose": "Small muted secondary label for field captions and code text" },
+    { "component": "label", "name": "section-title", "purpose": "Bold section titles: General Details / Relationship Details / Spend Trends / Accounts" },
+    { "component": "label", "name": "amount", "purpose": "Large bold currency amount ($25,000.00, $48,000.00)" },
+    { "component": "btn", "name": "outlined-accent-full", "purpose": "Full-width orange outlined 'Edit Details' button" },
+    { "component": "btn", "name": "square-accent", "purpose": "Solid orange square '+' icon button" },
+    { "component": "btn", "name": "chip-on", "purpose": "Active segmented control pill (6 months selected)" },
+    { "component": "btn", "name": "chip-off", "purpose": "Inactive segmented control pill (3 month / 1 year)" },
+    { "component": "anchor", "name": "view-details", "purpose": "Small blue uppercase 'VIEW DETAILS' link" },
+    { "component": "list-template", "name": "account", "purpose": "Light gray rounded card for each account in the accounts list" }
+  ]
+}

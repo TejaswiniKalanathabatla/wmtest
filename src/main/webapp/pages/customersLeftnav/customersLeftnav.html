@@ -1,0 +1,22 @@
+<wm-partial name="customersLeftnav" type="leftnav">
+    <wm-container name="leftnav_root" class="app-container-default" variant="default" direction="row"
+        alignment="middle-center" width="fill" height="80px">
+        <wm-picture name="brand_logo" picturesource="https://dh2dw20653ig1.cloudfront.net/assets/wavemaker_logo.png"
+            width="48px" height="48px" class="picture-brand-logo" variant="brand-logo"></wm-picture>
+    </wm-container>
+    <wm-nav name="leftnavigation" type="pills" layout="stacked">
+        <wm-nav-item name="nav_customers" class="active">
+            <wm-anchor caption="Customers" name="CustomersLink" iconclass="wi wi-user"
+                on-click="Actions.goToPage_Customers.navigate()"></wm-anchor>
+        </wm-nav-item>
+        <wm-nav-item name="nav_cards">
+            <wm-anchor caption="Cards" name="CardsLink" iconclass="wi wi-credit-card"></wm-anchor>
+        </wm-nav-item>
+        <wm-nav-item name="nav_billing">
+            <wm-anchor caption="Billing" name="BillingLink" iconclass="wi wi-tag"></wm-anchor>
+        </wm-nav-item>
+        <wm-nav-item name="nav_invoice">
+            <wm-anchor caption="Invoice" name="InvoiceLink" iconclass="wi wi-envelope"></wm-anchor>
+        </wm-nav-item>
+    </wm-nav>
+</wm-partial>

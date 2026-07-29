@@ -1,0 +1,6 @@
+.app-left-panel .nav-pills .nav-item.active > a,
+.app-left-panel .nav-pills .nav-item > a.active,
+.app-left-panel .nav-pills .nav-item > a:active {
+    background-color: #FF6600;
+    color: #ffffff;
+}

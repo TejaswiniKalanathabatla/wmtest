@@ -1,0 +1,225 @@
+{
+  "page": "CustomerDetails",
+  "pageParameters": [
+    { "name": "customerId", "type": "integer" }
+  ],
+  "widgetTree": [
+    {
+      "widget": "wm-page",
+      "name": "CustomerDetails",
+      "children": [
+        { "widget": "wm-left-panel", "name": "leftpanel", "props": { "content": "customersLeftnav", "navtype": "rail", "navheight": "full" } },
+        {
+          "widget": "wm-content", "name": "content",
+          "children": [
+            { "widget": "wm-header", "name": "header", "props": { "content": "customerDetailsHeader", "height": "60px", "class": "header-app", "variant": "app" } },
+            {
+              "widget": "wm-page-content", "name": "page_content",
+              "children": [
+                {
+                  "widget": "wm-container", "name": "root", "props": { "direction": "row", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug", "padding": "16px" },
+                  "children": [
+                    {
+                      "widget": "wm-container", "name": "left_col", "props": { "direction": "column", "gap": "16", "alignment": "top-left", "width": "320px", "height": "hug", "class": "container-panel-card", "variant": "panel-card", "padding": "16px" },
+                      "children": [
+                        { "widget": "wm-container", "name": "customer_top", "props": { "direction": "row", "gap": "auto", "alignment": "center", "width": "fill", "height": "hug" },
+                          "children": [
+                            { "widget": "wm-container", "name": "customer_top_left", "props": { "direction": "row", "gap": "12", "alignment": "middle-left", "width": "hug", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-picture", "name": "customer_avatar", "props": { "width": "44px", "height": "44px", "shape": "circle" } },
+                                { "widget": "wm-container", "name": "customer_name_col", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "hug", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_customer_name", "props": { "class": "label-strong", "variant": "strong" } },
+                                    { "widget": "wm-label", "name": "lbl_customer_code", "props": { "class": "label-muted-sm", "variant": "muted-sm" } }
+                                  ] }
+                              ] },
+                            { "widget": "wm-button", "name": "add_btn", "props": { "iconclass": "fa fa-plus", "class": "btn-square-accent", "variant": "square-accent" } }
+                          ] },
+                        { "widget": "wm-button", "name": "edit_details_btn", "props": { "caption": "Edit Details", "class": "btn-outlined-accent-full", "variant": "outlined-accent-full" } },
+                        { "widget": "wm-label", "name": "accounts_heading", "props": { "class": "label-section-title", "variant": "section-title" } },
+                        {
+                          "widget": "wm-list", "name": "accounts_list", "props": { "direction": "column", "navigation": "None", "pagesize": 10 },
+                          "children": [
+                            { "widget": "wm-listtemplate", "name": "accounts_tmpl", "props": { "direction": "column", "gap": "8", "alignment": "top-left", "width": "fill", "height": "hug", "padding": "12px", "class": "list-template-account", "variant": "account" },
+                              "children": [
+                                { "widget": "wm-container", "name": "row_top", "props": { "direction": "row", "gap": "auto", "alignment": "center", "width": "fill", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-container", "name": "row_top_left", "props": { "direction": "row", "gap": "8", "alignment": "middle-left", "width": "hug", "height": "hug" },
+                                      "children": [
+                                        { "widget": "wm-label", "name": "lbl_td_title", "props": { "class": "label-strong-sm", "variant": "strong-sm" } },
+                                        { "widget": "wm-label", "name": "lbl_td_owner", "props": { "class": "label-muted-sm", "variant": "muted-sm" } }
+                                      ] },
+                                    { "widget": "wm-anchor", "name": "view_details_link", "props": { "caption": "VIEW DETAILS", "class": "anchor-view-details", "variant": "view-details" } }
+                                  ] },
+                                { "widget": "wm-label", "name": "lbl_td_label", "props": { "caption": "Term Deposit", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                { "widget": "wm-label", "name": "lbl_td_amount", "props": { "class": "label-amount", "variant": "amount" } },
+                                { "widget": "wm-label", "name": "lbl_ma_label", "props": { "caption": "Maturity Amount", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                { "widget": "wm-label", "name": "lbl_ma_amount", "props": { "class": "label-amount", "variant": "amount" } },
+                                { "widget": "wm-container", "name": "cv_row", "props": { "direction": "row", "gap": "auto", "alignment": "top-left", "width": "fill", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-container", "name": "cv_col1", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "50%", "height": "hug" },
+                                      "children": [
+                                        { "widget": "wm-label", "name": "lbl_cv_label", "props": { "caption": "Current Value", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                        { "widget": "wm-label", "name": "lbl_cv_amount", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                      ] },
+                                    { "widget": "wm-container", "name": "cv_col2", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "50%", "height": "hug" },
+                                      "children": [
+                                        { "widget": "wm-label", "name": "lbl_td_matlbl", "props": { "caption": "Term Deposit", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                        { "widget": "wm-label", "name": "lbl_td_matured", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                      ] }
+                                  ] },
+                                { "widget": "wm-container", "name": "ttm_card", "props": { "direction": "column", "gap": "6", "alignment": "top-left", "width": "fill", "height": "hug", "class": "container-ttm", "variant": "ttm", "padding": "10px" },
+                                  "children": [
+                                    { "widget": "wm-container", "name": "ttm_row", "props": { "direction": "row", "gap": "auto", "alignment": "center", "width": "fill", "height": "hug" },
+                                      "children": [
+                                        { "widget": "wm-label", "name": "lbl_ttm_label", "props": { "caption": "Time to maturity", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                        { "widget": "wm-label", "name": "lbl_ttm_value", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                      ] },
+                                    { "widget": "wm-progress-bar", "name": "ttm_progress", "props": { "datavalue": 30, "type": "warning" } }
+                                  ] }
+                              ] }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "widget": "wm-container", "name": "right_col", "props": { "direction": "column", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug" },
+                      "children": [
+                        {
+                          "widget": "wm-container", "name": "general_panel", "props": { "direction": "column", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug", "padding": "20px", "class": "container-panel-card", "variant": "panel-card" },
+                          "children": [
+                            { "widget": "wm-label", "name": "lbl_general_title", "props": { "caption": "General Details", "class": "label-section-title", "variant": "section-title" } },
+                            { "widget": "wm-container", "name": "general_row1", "props": { "direction": "row", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-container", "name": "gd_phone", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_phone_lbl", "props": { "caption": "Phone", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_phone_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "gd_email", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_email_lbl", "props": { "caption": "Email", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_email_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "gd_id", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_id_lbl", "props": { "caption": "ID", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_id_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "gd_location", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_loc_lbl", "props": { "caption": "Location", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_loc_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] }
+                              ] },
+                            { "widget": "wm-container", "name": "general_row2", "props": { "direction": "row", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-container", "name": "gd_tz", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_tz_lbl", "props": { "caption": "Timezone", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_tz_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "gd_rs", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_rs_lbl", "props": { "caption": "Resident Status", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_rs_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] }
+                              ] }
+                          ]
+                        },
+                        {
+                          "widget": "wm-container", "name": "relationship_panel", "props": { "direction": "column", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug", "padding": "20px", "class": "container-panel-card", "variant": "panel-card" },
+                          "children": [
+                            { "widget": "wm-label", "name": "lbl_rel_title", "props": { "caption": "Relationship Details", "class": "label-section-title", "variant": "section-title" } },
+                            { "widget": "wm-container", "name": "rel_row1", "props": { "direction": "row", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-container", "name": "rd_since", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_since_lbl", "props": { "caption": "Customer Since", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_since_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "rd_value", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_cvalue_lbl", "props": { "caption": "Customer Value", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_cvalue_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "rd_status", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_status_lbl", "props": { "caption": "Status", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_status_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "rd_no_accounts", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_noacc_lbl", "props": { "caption": "No. of Accounts", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_noacc_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] }
+                              ] },
+                            { "widget": "wm-container", "name": "rel_row2", "props": { "direction": "row", "gap": "16", "alignment": "top-left", "width": "fill", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-container", "name": "rd_branch", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_branch_lbl", "props": { "caption": "Branch", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_branch_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "rd_branch_code", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_bcode_lbl", "props": { "caption": "Branch Code", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_bcode_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "rd_mgr", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_mgr_lbl", "props": { "caption": "Relationship Manager", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_mgr_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] },
+                                { "widget": "wm-container", "name": "rd_mgr_id", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "25%", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-label", "name": "lbl_mgrid_lbl", "props": { "caption": "Relationship Manager ID", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                    { "widget": "wm-label", "name": "lbl_mgrid_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                                  ] }
+                              ] },
+                            { "widget": "wm-container", "name": "rel_row3", "props": { "direction": "column", "gap": "2", "alignment": "top-left", "width": "fill", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-label", "name": "lbl_baddr_lbl", "props": { "caption": "Branch Address", "class": "label-muted-sm", "variant": "muted-sm" } },
+                                { "widget": "wm-label", "name": "lbl_baddr_val", "props": { "class": "label-strong-sm", "variant": "strong-sm" } }
+                              ] }
+                          ]
+                        },
+                        {
+                          "widget": "wm-container", "name": "spend_panel", "props": { "direction": "column", "gap": "12", "alignment": "top-left", "width": "fill", "height": "hug", "padding": "20px", "class": "container-panel-card", "variant": "panel-card" },
+                          "children": [
+                            { "widget": "wm-container", "name": "spend_header", "props": { "direction": "row", "gap": "auto", "alignment": "center", "width": "fill", "height": "hug" },
+                              "children": [
+                                { "widget": "wm-label", "name": "lbl_spend_title", "props": { "caption": "Spend Trends", "class": "label-section-title", "variant": "section-title" } },
+                                { "widget": "wm-container", "name": "spend_ctrls", "props": { "direction": "row", "gap": "8", "alignment": "middle-right", "width": "hug", "height": "hug" },
+                                  "children": [
+                                    { "widget": "wm-container", "name": "period_group", "props": { "direction": "row", "gap": "0", "alignment": "middle-center", "width": "hug", "height": "hug" },
+                                      "children": [
+                                        { "widget": "wm-button", "name": "btn_1m", "props": { "caption": "3 month", "class": "btn-chip-off", "variant": "chip-off" } },
+                                        { "widget": "wm-button", "name": "btn_6m", "props": { "caption": "6 months", "class": "btn-chip-on", "variant": "chip-on" } },
+                                        { "widget": "wm-button", "name": "btn_1y", "props": { "caption": "1 year", "class": "btn-chip-off", "variant": "chip-off" } }
+                                      ] },
+                                    { "widget": "wm-select", "name": "acc_select", "props": { "placeholder": "xxxx-xxxx-xxxx-4559", "width": "180px" } },
+                                    { "widget": "wm-select", "name": "year_select", "props": { "placeholder": "2024", "width": "90px" } }
+                                  ] }
+                              ] },
+                            { "widget": "wm-chart", "name": "spend_chart", "props": { "type": "Area", "showlegend": "hide", "showxaxis": true, "showyaxis": true } }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": [
+    { "name": "customerData", "type": "serviceVariable", "service": "teller_db", "operation": "CustomerController_getCustomer", "boundWidget": "left_col + general_panel + relationship_panel" },
+    { "name": "accountsData", "type": "serviceVariable", "service": "teller_db", "operation": "CustomerController_findAssociatedAccounts", "boundWidget": "accounts_list + relationship_panel" },
+    { "name": "depositAccountsData", "type": "serviceVariable", "service": "teller_db", "operation": "DepositAccountController_findDepositAccounts", "boundWidget": "accounts_list" },
+    { "name": "spendTrendData", "type": "entry", "isList": true, "boundWidget": "spend_chart" }
+  ]
+}

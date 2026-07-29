@@ -1,0 +1,66 @@
+.app-page-content {
+background-color: #F3F4F6;
+}
+
+/* Account Status checkbox label colors in search section */
+[name="ff_accountStatus"] .app-checkboxset-label[data-value="Active"] { color: #22c55e; }
+[name="ff_accountStatus"] .app-checkboxset-label[data-value="Inactive"] { color: #6b7280; }
+[name="ff_accountStatus"] .app-checkboxset-label[data-value="Suspended"] { color: #ef4444; }
+
+[name="ff_accountStatus"] .app-checkboxset .checkbox-label { font-weight: 500; }
+
+/* Reduce overall page padding and spacing */
+.app-page-content .app-container-default {
+    font-size: 13px;
+}
+
+/* Compact table */
+.app-page-content .app-datagrid-row td {
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+}
+.app-page-content .app-datagrid-header th {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    font-weight: 600;
+}
+
+/* Compact search form fields */
+.app-page-content .app-composite-widget .form-group {
+    margin-bottom: 8px;
+}
+.app-page-content .app-composite-widget .form-group label {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+.app-page-content .app-composite-widget .app-textbox,
+.app-page-content .app-composite-widget .app-select {
+    height: 32px;
+    font-size: 13px;
+}
+
+/* Compact search header */
+[name="search_header"] {
+    padding: 8px 16px !important;
+}
+[name="search_body"] {
+    padding: 8px 16px 16px 16px !important;
+}
+
+/* Compact root container */
+[name="root"] {
+    padding: 12px !important;
+    gap: 10px !important;
+}
+
+/* Page title smaller */
+[name="page_title"] .app-label {
+    font-size: 16px !important;
+    font-weight: 700;
+}
+
+/* Left nav rail smaller icons */
+.app-left-panel .app-nav .nav-item > a {
+    padding: 10px 8px;
+    font-size: 12px;
+}

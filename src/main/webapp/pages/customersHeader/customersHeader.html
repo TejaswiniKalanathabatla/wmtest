@@ -1,0 +1,36 @@
+<wm-partial name="customersHeader" type="header">
+    <wm-container name="header_layout" class="app-container-default" variant="default" direction="row" gap="auto"
+        alignment="center" width="fill" height="fill" padding="0px 20px">
+        <wm-container name="header_left" class="app-container-default" variant="default" direction="row" gap="12"
+            alignment="middle-left" width="hug" height="hug">
+            <wm-label name="page_title" caption="Customers" class="label-page-title-bold" variant="page-title-bold">
+            </wm-label>
+        </wm-container>
+        <wm-container name="header_right" class="app-container-default" variant="default" direction="row" gap="16"
+            alignment="middle-right" width="hug" height="hug">
+            <wm-button name="header_search_btn" caption="" iconclass="fa fa-search" class="btn-icon-plain"
+                variant="icon-plain" on-click="Page.Variables.showSearch.dataSet.dataValue=true"></wm-button>
+            <wm-container name="header_notif_wrap" class="app-container-default" variant="default" direction="row"
+                gap="0" alignment="middle-center" width="hug" height="hug" position="relative">
+                <wm-button name="header_notif_btn" caption="" iconclass="fa fa-bell" class="btn-icon-plain"
+                    variant="icon-plain"></wm-button>
+                <wm-label name="notif_badge" caption="9" class="label-notif-badge" variant="notif-badge"
+                    position="absolute" positionvalue="4px 2px auto auto" show="false"></wm-label>
+            </wm-container>
+            <wm-container name="header_user" class="container-header-user" variant="header-user" direction="row" gap="8"
+                alignment="middle-left" width="hug" height="hug" padding="4px 8px">
+                <wm-picture name="user_avatar"
+                    picturesource="bind:App.Variables.loggedInUser.dataSet.profilePicture || 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg'"
+                    width="32px" height="32px" shape="circle" class="picture-avatar-round" variant="avatar-round">
+                </wm-picture>
+                <wm-container name="user_text" class="app-container-default" variant="default" direction="column"
+                    gap="0" alignment="top-left" width="hug" height="hug">
+                    <wm-label name="user_name" caption="bind:App.Variables.loggedInUser.dataSet.name"
+                        class="label-user-name" variant="user-name"></wm-label>
+                    <wm-label name="user_role" caption="bind:App.Variables.loggedInUser.dataSet.userRoles[0]"
+                        class="label-user-role" variant="user-role"></wm-label>
+                </wm-container>
+            </wm-container>
+        </wm-container>
+    </wm-container>
+</wm-partial>

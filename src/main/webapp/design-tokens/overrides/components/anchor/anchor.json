@@ -1,0 +1,25 @@
+{
+  "anchor": {
+    "appearances": {
+      "view-details": {
+        "mapping": {
+          "color": { "value": "{color.info.@.value}", "type": "color" },
+          "font-size": { "value": "{body.small.font-size.value}", "type": "font" },
+          "font-weight": { "value": "{font.weight.700.value}", "type": "font" },
+          "text-decoration": { "value": "none", "type": "font" },
+          "letter-spacing": { "value": "0.05em", "type": "font" },
+          "background-color": { "value": "none", "type": "color" }
+        }
+      },
+      "breadcrumb": {
+        "mapping": {
+          "color": { "value": "{color.on-surface.variant.@.value}", "type": "color" },
+          "font-size": { "value": "{body.medium.font-size.value}", "type": "font" },
+          "font-weight": { "value": "{font.weight.400.value}", "type": "font" },
+          "text-decoration": { "value": "none", "type": "font" },
+          "background-color": { "value": "none", "type": "color" }
+        }
+      }
+    }
+  }
+}

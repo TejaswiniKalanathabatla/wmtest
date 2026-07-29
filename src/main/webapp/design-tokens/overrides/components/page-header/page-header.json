@@ -1,0 +1,20 @@
+{
+  "header": {
+    "appearances": {
+      "app": {
+        "mapping": {
+          "background": { "value": "{color.white.@.value}", "type": "color" },
+          "color": { "value": "{color.on-surface.@.value}", "type": "color" },
+          "height": { "value": "{space.12.value}", "type": "space" },
+          "padding": { "value": "{space.0.value}", "type": "space" },
+          "border": {
+            "width": { "value": "{border.width.0.value}", "type": "space" },
+            "style": { "value": "none", "type": "radius" },
+            "color": { "value": "{color.transparent.value}", "type": "color" }
+          },
+          "shadow": { "value": "{elevation.shadow.1.value}", "type": "radius" }
+        }
+      }
+    }
+  }
+}

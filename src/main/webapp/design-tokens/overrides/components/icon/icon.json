@@ -1,0 +1,20 @@
+{
+  "icon": {
+    "appearances": {
+      "breadcrumb": {
+        "mapping": {
+          "color": { "value": "{color.on-surface.variant.@.value}", "type": "color" },
+          "icon-size": { "value": "{icon.size.sm.value}", "type": "space" },
+          "background": { "value": "{color.transparent.value}", "type": "color" }
+        }
+      },
+      "breadcrumb-sep": {
+        "mapping": {
+          "color": { "value": "{color.on-surface.variant.@.value}", "type": "color" },
+          "icon-size": { "value": "{icon.size.xs.value}", "type": "space" },
+          "background": { "value": "{color.transparent.value}", "type": "color" }
+        }
+      }
+    }
+  }
+}

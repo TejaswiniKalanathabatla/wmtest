@@ -1,0 +1,272 @@
+<wm-page name="CustomerDetails" pagetitle="Customer Details">
+    <wm-left-panel name="leftpanel" content="customersLeftnav" navtype="rail" navheight="full"></wm-left-panel>
+    <wm-content name="content">
+        <wm-header name="header" content="customerDetailsHeader" height="60px" class="header-app" variant="app">
+        </wm-header>
+        <wm-page-content name="page_content" columnwidth="12">
+            <wm-container name="root" class="app-container-default" variant="default" direction="row" gap="16"
+                alignment="top-left" width="fill" height="hug" padding="16px">
+                <!-- LEFT COLUMN: customer profile card -->
+                <wm-container name="left_col" class="container-panel-card" variant="panel-card" direction="column"
+                    gap="16" alignment="top-left" width="320px" height="hug" padding="16px">
+                    <wm-container name="customer_top" class="app-container-default" variant="default" direction="row"
+                        gap="auto" alignment="center" width="fill" height="hug">
+                        <wm-container name="customer_top_left" class="app-container-default" variant="default"
+                            direction="row" gap="12" alignment="middle-left" width="hug" height="hug">
+                            <wm-picture name="customer_avatar"
+                                picturesource="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg"
+                                width="44px" height="44px" shape="circle" class="picture-avatar-round"
+                                variant="avatar-round"></wm-picture>
+                            <wm-container name="customer_name_col" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="hug" height="hug">
+                                <wm-label name="lbl_customer_name"
+                                    caption="bind:Variables.GetCustomerDetails.dataSet.firstname + ' ' + Variables.GetCustomerDetails.dataSet.lastname"
+                                    class="label-strong" variant="strong"></wm-label>
+                                <wm-label name="lbl_customer_code"
+                                    caption="bind:Variables.GetCustomerDetails.dataSet.customerId"
+                                    class="label-muted-sm" variant="muted-sm"></wm-label>
+                            </wm-container>
+                        </wm-container>
+                        <wm-button name="add_btn" caption="" iconclass="fa fa-plus" class="btn-square-accent"
+                            variant="square-accent" on-click="Actions.navToCreateDeposit.invoke()"></wm-button>
+                    </wm-container>
+                    <wm-button name="edit_details_btn" caption="Edit Details" class="btn-outlined-accent-full"
+                        variant="outlined-accent-full"></wm-button>
+                    <wm-label name="accounts_heading"
+                        caption="bind:'Accounts (' + (Variables.GetAccountDetailsByCustomer.dataSet.content ? Variables.GetAccountDetailsByCustomer.dataSet.content.length : 0) + ')'"
+                        class="label-section-title" variant="section-title"></wm-label>
+                    <wm-list name="accounts_list" dataset="bind:Variables.GetDepositAccountsByCustomer.dataSet.content"
+                        direction="column" navigation="None" pagesize="10" itemsperrow="xs-1 sm-1 md-1 lg-1"
+                        selectionlimit="1">
+                        <wm-listtemplate name="accounts_tmpl" class="list-template-account" variant="account"
+                            direction="column" gap="8" alignment="top-left" width="fill" height="hug" padding="12px">
+                            <wm-container name="row_top" class="app-container-default" variant="default" direction="row"
+                                gap="auto" alignment="center" width="fill" height="hug">
+                                <wm-container name="row_top_left" class="app-container-default" variant="default"
+                                    direction="row" gap="8" alignment="middle-left" width="hug" height="hug">
+                                    <wm-label name="lbl_td_title"
+                                        caption="bind:'Term Deposit ' + ((typeof $index !== 'undefined') ? ($index + 1) : '')"
+                                        class="label-strong-sm" variant="strong-sm"></wm-label>
+                                    <wm-label name="lbl_td_owner" caption="Single" class="label-muted-sm"
+                                        variant="muted-sm"></wm-label>
+                                </wm-container>
+                                <wm-anchor name="view_details_link" caption="VIEW DETAILS" class="anchor-view-details"
+                                    variant="view-details"></wm-anchor>
+                            </wm-container>
+                            <wm-label name="lbl_td_label" caption="Term Deposit" class="label-muted-sm"
+                                variant="muted-sm"></wm-label>
+                            <wm-label name="lbl_td_amount" caption="bind:'$' + item.termDeposit" class="label-amount"
+                                variant="amount"></wm-label>
+                            <wm-label name="lbl_ma_label" caption="Maturity Amount" class="label-muted-sm"
+                                variant="muted-sm"></wm-label>
+                            <wm-label name="lbl_ma_amount" caption="bind:'$' + item.maturityAmount" class="label-amount"
+                                variant="amount"></wm-label>
+                            <wm-container name="cv_row" class="app-container-default" variant="default" direction="row"
+                                gap="auto" alignment="top-left" width="fill" height="hug">
+                                <wm-container name="cv_col1" class="app-container-default" variant="default"
+                                    direction="column" gap="2" alignment="top-left" width="50%" height="hug">
+                                    <wm-label name="lbl_cv_label" caption="Current Value" class="label-muted-sm"
+                                        variant="muted-sm"></wm-label>
+                                    <wm-label name="lbl_cv_amount"
+                                        caption="bind:'$' + (Number(item.termDeposit) * (1 + (Number(item.rateOfInterest) / 100) * ((new Date() - new Date(item.depositedAt)) / 31536000000))).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})"
+                                        class="label-strong-sm" variant="strong-sm"></wm-label>
+                                </wm-container>
+                                <wm-container name="cv_col2" class="app-container-default" variant="default"
+                                    direction="column" gap="2" alignment="top-left" width="50%" height="hug">
+                                    <wm-label name="lbl_td_matlbl" caption="Term Deposit" class="label-muted-sm"
+                                        variant="muted-sm"></wm-label>
+                                    <wm-label name="lbl_td_matured" caption="bind:item.maturedAt"
+                                        class="label-strong-sm" variant="strong-sm"></wm-label>
+                                </wm-container>
+                            </wm-container>
+                            <wm-container name="ttm_card" class="container-ttm" variant="ttm" direction="column" gap="6"
+                                alignment="top-left" width="fill" height="hug" padding="10px">
+                                <wm-container name="ttm_row" class="app-container-default" variant="default"
+                                    direction="row" gap="auto" alignment="center" width="fill" height="hug">
+                                    <wm-label name="lbl_ttm_label" caption="Time to maturity" class="label-muted-sm"
+                                        variant="muted-sm"></wm-label>
+                                    <wm-label name="TimetoMaturity"
+                                        caption="bind:Math.ceil((new Date(item.maturedAt) - new Date()) / 86400000) &gt; 0 ? Math.ceil((new Date(item.maturedAt) - new Date()) / 86400000) + ' days' : 'Matured'"
+                                        class="label-strong-sm" variant="strong-sm"></wm-label>
+                                </wm-container>
+                                <wm-progress-bar datavalue="bind:calculate(item.depositedAt,item.maturedAt)"
+                                    width="220px" name="progress_bar2" class="app-progress progress-bar-default"
+                                    variant="filled:default" dataset="bind:calculate(item.depositedAt,item.maturedAt)">
+                                </wm-progress-bar>
+                            </wm-container>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-container>
+                <!-- RIGHT COLUMN: details panels -->
+                <wm-container name="right_col" class="app-container-default" variant="default" direction="column"
+                    gap="16" alignment="top-left" width="fill" height="hug">
+                    <!-- General Details -->
+                    <wm-container name="general_panel" class="container-panel-card" variant="panel-card"
+                        direction="column" gap="16" alignment="top-left" width="fill" height="hug" padding="20px">
+                        <wm-label name="lbl_general_title" caption="General Details" class="label-section-title"
+                            variant="section-title"></wm-label>
+                        <wm-container name="general_row1" class="app-container-default" variant="default"
+                            direction="row" gap="16" alignment="top-left" width="fill" height="hug">
+                            <wm-container name="gd_phone" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_phone_lbl" caption="Phone" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_phone_val" caption="bind:Variables.GetCustomerDetails.dataSet.phone"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="gd_email" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_email_lbl" caption="Email" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_email_val" caption="bind:Variables.GetCustomerDetails.dataSet.email"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="gd_id" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_id_lbl" caption="ID" class="label-muted-sm" variant="muted-sm">
+                                </wm-label>
+                                <wm-label name="lbl_id_val" caption="bind:Variables.GetCustomerDetails.dataSet.idProof"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="gd_location" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_loc_lbl" caption="Location" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_loc_val" caption="bind:Variables.GetCustomerDetails.dataSet.city"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                        </wm-container>
+                        <wm-container name="general_row2" class="app-container-default" variant="default"
+                            direction="row" gap="16" alignment="top-left" width="fill" height="hug">
+                            <wm-container name="gd_tz" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_tz_lbl" caption="Timezone" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_tz_val" caption="bind:Variables.GetCustomerDetails.dataSet.timeZone"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="gd_rs" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_rs_lbl" caption="Resident Status" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_rs_val"
+                                    caption="bind:Variables.GetCustomerDetails.dataSet.residentStatus"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                        </wm-container>
+                    </wm-container>
+                    <!-- Relationship Details -->
+                    <wm-container name="relationship_panel" class="container-panel-card" variant="panel-card"
+                        direction="column" gap="16" alignment="top-left" width="fill" height="hug" padding="20px">
+                        <wm-label name="lbl_rel_title" caption="Relationship Details" class="label-section-title"
+                            variant="section-title"></wm-label>
+                        <wm-container name="rel_row1" class="app-container-default" variant="default" direction="row"
+                            gap="16" alignment="top-left" width="fill" height="hug">
+                            <wm-container name="rd_since" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_since_lbl" caption="Customer Since" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_since_val"
+                                    caption="bind:Variables.GetCustomerDetails.dataSet.createdAt | date : 'MM/dd/yyyy'"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="rd_value" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_cvalue_lbl" caption="Customer Value" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_cvalue_val" caption="$78,567.76" class="label-strong-sm"
+                                    variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="rd_status" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_status_lbl" caption="Status" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_status_val" caption="Private Customer" class="label-strong-sm"
+                                    variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="rd_no_accounts" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_noacc_lbl" caption="No. of Accounts" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_noacc_val"
+                                    caption="bind:(Variables.GetAccountDetailsByCustomer.dataSet.id ? Variables.GetAccountDetailsByCustomer.dataSet.id.length : 0)"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                        </wm-container>
+                        <wm-container name="rel_row2" class="app-container-default" variant="default" direction="row"
+                            gap="16" alignment="top-left" width="fill" height="hug">
+                            <wm-container name="rd_branch" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_branch_lbl" caption="Branch" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_branch_val"
+                                    caption="bind:Variables.GetAccountDetailsByCustomer.dataSet.content[0].branchName"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="rd_branch_code" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_bcode_lbl" caption="Branch Code" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_bcode_val"
+                                    caption="bind:(Variables.GetAccountDetailsByCustomer.dataSet.content &amp;&amp; Variables.GetAccountDetailsByCustomer.dataSet.content[0]) ? Variables.GetAccountDetailsByCustomer.dataSet.content[0].branchCode : ''"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="rd_mgr" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_mgr_lbl" caption="Relationship Manager" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_mgr_val"
+                                    caption="bind:(Variables.GetAccountDetailsByCustomer.dataSet.content &amp;&amp; Variables.GetAccountDetailsByCustomer.dataSet.content[0]) ? Variables.GetAccountDetailsByCustomer.dataSet.content[0].managerName : ''"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                            <wm-container name="rd_mgr_id" class="app-container-default" variant="default"
+                                direction="column" gap="2" alignment="top-left" width="25%" height="hug">
+                                <wm-label name="lbl_mgrid_lbl" caption="Relationship Manager ID" class="label-muted-sm"
+                                    variant="muted-sm"></wm-label>
+                                <wm-label name="lbl_mgrid_val"
+                                    caption="bind:(Variables.GetAccountDetailsByCustomer.dataSet.content &amp;&amp; Variables.GetAccountDetailsByCustomer.dataSet.content[0]) ? Variables.GetAccountDetailsByCustomer.dataSet.content[0].managerId : ''"
+                                    class="label-strong-sm" variant="strong-sm"></wm-label>
+                            </wm-container>
+                        </wm-container>
+                        <wm-container name="rel_row3" class="app-container-default" variant="default" direction="column"
+                            gap="2" alignment="top-left" width="fill" height="hug">
+                            <wm-label name="lbl_baddr_lbl" caption="Branch Address" class="label-muted-sm"
+                                variant="muted-sm"></wm-label>
+                            <wm-label name="lbl_baddr_val"
+                                caption="bind:(Variables.GetAccountDetailsByCustomer.dataSet.content &amp;&amp; Variables.GetAccountDetailsByCustomer.dataSet.content[0]) ? ((Variables.GetAccountDetailsByCustomer.dataSet.content[0].branchAddress1 || '') + ', ' + (Variables.GetAccountDetailsByCustomer.dataSet.content[0].branchCity || '') + ' ' + (Variables.GetAccountDetailsByCustomer.dataSet.content[0].branchState || '') + ' ' + (Variables.GetAccountDetailsByCustomer.dataSet.content[0].branchPin || '')) : ''"
+                                class="label-strong-sm" variant="strong-sm"></wm-label>
+                        </wm-container>
+                    </wm-container>
+                    <!-- Spend Trends -->
+                    <wm-container name="spend_panel" class="container-panel-card" variant="panel-card"
+                        direction="column" gap="12" alignment="top-left" width="fill" height="hug" padding="20px">
+                        <wm-container name="spend_header" class="app-container-default" variant="default"
+                            direction="row" gap="auto" alignment="center" width="fill" height="hug">
+                            <wm-label name="lbl_spend_title" caption="Spend Trends" class="label-section-title"
+                                variant="section-title"></wm-label>
+                            <wm-container name="spend_ctrls" class="app-container-default" variant="default"
+                                direction="row" gap="8" alignment="middle-right" width="hug" height="hug">
+                                <wm-container name="period_group" class="app-container-default" variant="default"
+                                    direction="row" gap="0" alignment="middle-center" width="hug" height="hug">
+                                    <wm-button name="btn_1m" caption="3 month" class="btn-chip-off" variant="chip-off">
+                                    </wm-button>
+                                    <wm-button name="btn_6m" caption="6 months" class="btn-chip-on" variant="chip-on">
+                                    </wm-button>
+                                    <wm-button name="btn_1y" caption="1 year" class="btn-chip-off" variant="chip-off">
+                                    </wm-button>
+                                </wm-container>
+                                <wm-select name="acc_select" placeholder="xxxx-xxxx-xxxx-4559"
+                                    dataset="bind:Variables.accountNumberOptions.dataSet" width="180px"></wm-select>
+                                <wm-select name="year_select" placeholder="2024"
+                                    dataset="bind:Variables.yearOptions.dataSet" width="90px"></wm-select>
+                            </wm-container>
+                        </wm-container>
+                        <wm-chart name="spend_chart" type="Area" dataset="bind:Variables.spendTrendData.dataSet"
+                            xaxisdatakey="month" yaxisdatakey="amount" showlegend="hide" showxaxis="true"
+                            showyaxis="true" height="280px" width="fill"></wm-chart>
+                    </wm-container>
+                </wm-container>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

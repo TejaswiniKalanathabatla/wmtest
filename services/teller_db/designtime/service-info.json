@@ -1,0 +1,7 @@
+{
+  "id" : "teller_db",
+  "type" : "DataService",
+  "packageNames" : [ "com.wavemaker.teller_app.teller_db" ],
+  "title" : "teller_db",
+  "mockEnabled" : false
+}

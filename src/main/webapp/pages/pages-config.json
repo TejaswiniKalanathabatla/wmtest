@@ -1,0 +1,72 @@
+[ {
+  "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "CreateDeposit",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "CustomerDetails",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "customerId",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "Customers",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Login",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Main",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Test",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "createDepositHeader",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "createDepositLeftPanel",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "customerDetailsHeader",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "customersHeader",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "customersLeftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "footer",
+  "type" : "FOOTER",
+  "params" : [ ]
+}, {
+  "name" : "header",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "leftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "rightnav",
+  "type" : "RIGHTNAV",
+  "params" : [ ]
+}, {
+  "name" : "topnav",
+  "type" : "TOPNAV",
+  "params" : [ ]
+} ]

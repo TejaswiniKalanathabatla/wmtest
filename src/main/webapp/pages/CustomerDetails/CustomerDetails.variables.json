@@ -1,0 +1,180 @@
+{
+  "accountNumberOptions" : {
+    "_id" : "wm-accountNumberOptions-wm.Variable-1784018900005",
+    "name" : "accountNumberOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "xxxx-xxxx-xxxx-4559", "xxxx-xxxx-xxxx-2210", "xxxx-xxxx-xxxx-8891" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "GetAccountDetailsByCustomer" : {
+    "_id" : "wm-GetAccountDetailsByCustomer-wm.ServiceVariable-1784018900011",
+    "name" : "GetAccountDetailsByCustomer",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:pageParams.customerId"
+    }, {
+      "target" : "size",
+      "value" : "20"
+    } ],
+    "service" : "teller_db",
+    "operation" : "executeGetAccountDetailsByCustomer",
+    "operationId" : "QueryExecutionController_executeGetAccountDetailsByCustomer",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : { },
+    "isList" : true,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false
+  },
+  "GetCustomerDetails" : {
+    "_id" : "wm-GetCustomerDetails-wm.ServiceVariable-1784018900010",
+    "name" : "GetCustomerDetails",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:pageParams.customerId"
+    } ],
+    "service" : "teller_db",
+    "operation" : "executeGetCustomerDetails",
+    "operationId" : "QueryExecutionController_executeGetCustomerDetails",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : { },
+    "isList" : false,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false
+  },
+  "GetDepositAccountsByCustomer" : {
+    "_id" : "wm-GetDepositAccountsByCustomer-wm.ServiceVariable-1784018900012",
+    "name" : "GetDepositAccountsByCustomer",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:pageParams.customerId"
+    }, {
+      "target" : "size",
+      "value" : "20"
+    } ],
+    "service" : "teller_db",
+    "operation" : "executeGetDepositAccountsByCustomer",
+    "operationId" : "QueryExecutionController_executeGetDepositAccountsByCustomer",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : { },
+    "isList" : true,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false
+  },
+  "navToCreateDeposit" : {
+    "_id" : "wm-navToCreateDeposit-wm.NavigationAction-1784024786716",
+    "name" : "navToCreateDeposit",
+    "owner" : "Page",
+    "category" : "wm.NavigationAction",
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:pageParams.customerId",
+      "type" : "integer"
+    }, {
+      "target" : "firstName",
+      "value" : "bind:Variables.selectedCustomerData.dataSet.dataValue.firstName",
+      "type" : "string"
+    }, {
+      "target" : "lastName",
+      "value" : "bind:Variables.selectedCustomerData.dataSet.dataValue.lastName",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "pageName" : "CreateDeposit",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "selectedCustomerData" : {
+    "_id" : "wm-selectedCustomerData-wm.Variable-1784699479532",
+    "name" : "selectedCustomerData",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : {
+        "customerId" : "",
+        "firstName" : "",
+        "lastName" : ""
+      }
+    },
+    "type" : "entry",
+    "isList" : false,
+    "twoWayBinding" : false
+  },
+  "spendTrendData" : {
+    "_id" : "wm-spendTrendData-wm.Variable-1784018900007",
+    "name" : "spendTrendData",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "month" : "Jan",
+      "amount" : 4200
+    }, {
+      "month" : "Feb",
+      "amount" : 3800
+    }, {
+      "month" : "Mar",
+      "amount" : 4600
+    }, {
+      "month" : "Apr",
+      "amount" : 4100
+    }, {
+      "month" : "May",
+      "amount" : 3500
+    }, {
+      "month" : "Jun",
+      "amount" : 4300
+    }, {
+      "month" : "Jul",
+      "amount" : 3900
+    }, {
+      "month" : "Aug",
+      "amount" : 4700
+    }, {
+      "month" : "Sep",
+      "amount" : 4200
+    }, {
+      "month" : "Oct",
+      "amount" : 5100
+    }, {
+      "month" : "Nov",
+      "amount" : 6800
+    }, {
+      "month" : "Dec",
+      "amount" : 7900
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "twoWayBinding" : false
+  },
+  "yearOptions" : {
+    "_id" : "wm-yearOptions-wm.Variable-1784018900006",
+    "name" : "yearOptions",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ "2020", "2021", "2022", "2023", "2024" ],
+    "type" : "string",
+    "isList" : true,
+    "twoWayBinding" : false
+  }
+}

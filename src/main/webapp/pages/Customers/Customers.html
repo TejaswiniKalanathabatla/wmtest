@@ -1,0 +1,134 @@
+<wm-page name="Customers" pagetitle="Customers">
+    <wm-left-panel name="leftpanel" content="customersLeftnav" navtype="rail" navheight="full"></wm-left-panel>
+    <wm-content name="content">
+        <wm-header name="header" content="customersHeader" height="60px" class="header-app" variant="app"></wm-header>
+        <wm-page-content name="page_content" columnwidth="12">
+            <wm-container name="root" class="app-container-default" variant="default" direction="column" gap="12"
+                alignment="top-left" width="fill" height="hug" padding="16px">
+                <!-- Search Section (collapsible) -->
+                <wm-container name="search_section" class="container-search-panel" variant="search-panel"
+                    direction="column" gap="0" alignment="top-left" width="fill" height="hug">
+                    <wm-container name="search_header" class="app-container-default" variant="default" direction="row"
+                        gap="auto" alignment="center" width="fill" height="hug" padding="12px 20px">
+                        <wm-container name="search_header_left" class="app-container-default" variant="default"
+                            direction="row" gap="12" alignment="middle-left" width="hug" height="hug">
+                            <wm-label name="search_title" caption="Search" class="label-search-title"
+                                variant="search-title" fontweight="bold"></wm-label>
+                            <wm-label name="search_hint" caption="Define your search criteria to see results"
+                                class="label-search-hint" variant="search-hint"></wm-label>
+                            <wm-label name="search_result_count" caption="0 results" class="label-search-count"
+                                variant="search-count"></wm-label>
+                        </wm-container>
+                        <wm-button name="search_toggle" caption="" iconclass="fa fa-chevron-up" class="btn-icon-plain"
+                            variant="icon-plain" on-click="hideSearch($event, widget)"></wm-button>
+                    </wm-container>
+                    <wm-container name="search_body" show="bind:Variables.showSearch.dataSet.dataValue"
+                        class="container-search-body" variant="search-body" direction="column" gap="16"
+                        alignment="top-left" width="fill" height="hug" padding="8px 20px 20px 20px">
+                        <wm-form name="searchForm" captionposition="top" novalidate="true" width="fill">
+                            <wm-container name="search_row1" class="app-container-default" variant="default"
+                                direction="row" gap="16" alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_firstName" widget="text" displayname="Customer First Name"
+                                    placeholder="Enter customer first name" width="100%"></wm-form-field>
+                                <wm-form-field name="ff_lastName" widget="text" displayname="Customer Last Name"
+                                    placeholder="Enter customer last name" width="100%"></wm-form-field>
+                                <wm-form-field name="ff_branch" widget="select" displayname="Branch" placeholder="All"
+                                    dataset="bind:Variables.branchOptions.dataSet" datavalue="All" width="100%">
+                                </wm-form-field>
+                                <wm-form-field name="ff_accountType" widget="select" displayname="Account Type"
+                                    placeholder="All" dataset="bind:Variables.accountTypeOptions.dataSet"
+                                    datavalue="All" width="100%"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="search_row2" class="app-container-default" variant="default"
+                                direction="row" gap="16" alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_activationFrom" widget="select"
+                                    displayname="Acc. Activation From" placeholder="Select year"
+                                    dataset="bind:Variables.yearOptions.dataSet" width="100%"></wm-form-field>
+                                <wm-form-field name="ff_activationTo" widget="select" displayname="Acc. Activation To"
+                                    placeholder="Select year" dataset="bind:Variables.yearOptions.dataSet" width="100%">
+                                </wm-form-field>
+                                <wm-form-field name="ff_accountStatus" widget="checkboxset" displayname="Account Status"
+                                    dataset="bind:Variables.accountStatusOptions.dataSet" datafield="value"
+                                    displayfield="label" itemsperrow="xs-3 sm-3 md-3 lg-3" width="100%"></wm-form-field>
+                            </wm-container>
+                            <wm-form-action name="clear_action" caption="Clear" class="btn-outlined-clear"
+                                variant="outlined-clear" action="clearSearch()" display-name="Clear"></wm-form-action>
+                            <wm-form-action name="search_action" caption="Search" class="btn-cta-orange"
+                                variant="cta-orange" type="submit" action="submitSearch()" display-name="Search">
+                            </wm-form-action>
+                        </wm-form>
+                    </wm-container>
+                </wm-container>
+                <!-- Table Section -->
+                <wm-container name="table_section" class="container-table-panel" variant="table-panel"
+                    direction="column" gap="0" alignment="top-left" width="fill" height="hug">
+                    <wm-table name="customersTable" dataset="bind:Variables.customersQueryData.dataSet.content"
+                        navigation="Basic" pagesize="5" enablesort="true" spacing="standard" gridclass="table-hover">
+                        <wm-table-column binding="firstname" caption="Customer" width="18%" edit-widget-type="text"
+                            show="true" type="string" sortable="false" showineditmode="true" readonly="false">
+                            <wm-container name="col_customer_cell" direction="column" gap="2" alignment="top-left"
+                                width="hug" height="hug" class="app-container-default">
+                                <wm-label name="lbl_fullname"
+                                    caption="bind:(row.getProperty('firstname') || '') + ' ' + (row.getProperty('lastname') || '')"
+                                    fontweight="bold"></wm-label>
+                                <wm-label name="lbl_code" caption="bind:row.getProperty('customercode')"
+                                    class="text-primary" fontsize="12px"></wm-label>
+                            </wm-container>
+                        </wm-table-column>
+                        <wm-table-column binding="phone" caption="Contact" width="17%" edit-widget-type="text"
+                            show="true" type="string" sortable="false" showineditmode="true" readonly="false">
+                            <wm-container name="col_contact_cell" direction="column" gap="2" alignment="top-left"
+                                width="hug" height="hug" class="app-container-default">
+                                <wm-label name="lbl_phone" caption="bind:row.getProperty('phone')"></wm-label>
+                                <wm-label name="lbl_email" caption="bind:row.getProperty('email')" fontsize="12px"
+                                    class="text-muted"></wm-label>
+                            </wm-container>
+                        </wm-table-column>
+                        <wm-table-column binding="totalbalance" caption="Balance" width="11%" edit-widget-type="number"
+                            show="true" type="number" sortable="false" showineditmode="true" readonly="false">
+                            <wm-label name="lbl_balance"
+                                caption="bind:'$' + (row.getProperty('totalbalance') ? Number(row.getProperty('totalbalance')).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) : '0.00')">
+                            </wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="branchname" caption="Branch" width="13%" edit-widget-type="text"
+                            show="true" type="string" sortable="false" showineditmode="true" readonly="false">
+                            <wm-container name="col_branch_cell" direction="column" gap="2" alignment="top-left"
+                                width="hug" height="hug" class="app-container-default">
+                                <wm-label name="lbl_branch_name" caption="bind:row.getProperty('branchname')">
+                                </wm-label>
+                                <wm-label name="lbl_branch_city" caption="bind:row.getProperty('branchcity')"
+                                    fontsize="12px" class="text-muted"></wm-label>
+                            </wm-container>
+                        </wm-table-column>
+                        <wm-table-column binding="accountcount" caption="No. of Accounts" width="10%"
+                            edit-widget-type="number" show="true" type="number" sortable="false" showineditmode="true"
+                            readonly="false"></wm-table-column>
+                        <wm-table-column binding="managername" caption="Relationship Manager" width="14%"
+                            edit-widget-type="text" show="true" type="string" sortable="false" showineditmode="true"
+                            readonly="false">
+                            <wm-container name="col_manager_cell" direction="column" gap="2" alignment="top-left"
+                                width="hug" height="hug" class="app-container-default">
+                                <wm-label name="lbl_manager_name" caption="bind:row.getProperty('managername')">
+                                </wm-label>
+                                <wm-label name="lbl_manager_city" caption="bind:row.getProperty('managercity')"
+                                    fontsize="12px" class="text-muted"></wm-label>
+                            </wm-container>
+                        </wm-table-column>
+                        <wm-table-column binding="accountstatussummary" caption="Account Status" width="12%"
+                            edit-widget-type="text" show="true" type="string" sortable="false" showineditmode="true"
+                            readonly="false">
+                            <wm-label name="lbl_status_summary"
+                                caption="bind:row.getProperty('accountstatussummary') || '—'"></wm-label>
+                        </wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="" width="120px" searchable="false" show="true"
+                            type="custom" readonly="true" sortable="false" showineditmode="true"></wm-table-column>
+                        <wm-table-row-action key="customRow" display-name="" show="true" class="btn-transparent"
+                            iconclass="wm-sl-l sl-add fa-border" title=""
+                            action="goToCustomerDetails($event, row)" disabled="false" widget-type="button"
+                            icon="wm-sl-l sl-add fa-border"></wm-table-row-action>
+                    </wm-table>
+                </wm-container>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

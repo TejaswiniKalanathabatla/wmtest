@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <sql-query name="GetAccountDetailsByCustomer">
+        <![CDATA[
+        SELECT ac.id, ac.account_number, ac.type, ac.status, ac.activated_from, ac.activate_to, b.name AS branch_name, b.code AS branch_code, ba.address1 AS branch_address1, ba.city AS branch_city, ba.state AS branch_state, ba.pin AS branch_pin, m.name AS manager_name, m.manager_id AS manager_id FROM account ac JOIN customer c ON ac.customer_id = c.customer_id LEFT JOIN branch b ON ac.branch_id = b.id LEFT JOIN address ba ON b.address_id = ba.id LEFT JOIN manager m ON ac.manager_id = m.manager_id WHERE c.id = :customerId
+        ]]>
+    <query-param name="customerId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="GetAccountDetailsByCustomer__count">
+        <![CDATA[
+        select count(*) from (SELECT ac.id, ac.account_number, ac.type, ac.status, ac.activated_from, ac.activate_to, b.name AS branch_name, b.code AS branch_code, ba.address1 AS branch_address1, ba.city AS branch_city, ba.state AS branch_state, ba.pin AS branch_pin, m.name AS manager_name, m.manager_id AS manager_id FROM account ac JOIN customer c ON ac.customer_id = c.customer_id LEFT JOIN branch b ON ac.branch_id = b.id LEFT JOIN address ba ON b.address_id = ba.id LEFT JOIN manager m ON ac.manager_id = m.manager_id WHERE c.id = :customerId) wmTempTable
+        ]]>
+    <query-param name="customerId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="GetDepositAccountsByCustomer">
+        <![CDATA[
+        SELECT da.id, da.term_deposit, da.maturity_amount, da.rate_of_interest, da.deposited_at, da.matured_at, da.status, ac.account_number, ac.type AS account_type FROM deposit_account da JOIN account ac ON da.account_number = ac.account_number JOIN customer c ON ac.customer_id = c.customer_id WHERE c.id = :customerId
+        ]]>
+    <query-param name="customerId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="GetDepositAccountsByCustomer__count">
+        <![CDATA[
+        select count(*) from (SELECT da.id, da.term_deposit, da.maturity_amount, da.rate_of_interest, da.deposited_at, da.matured_at, da.status, ac.account_number, ac.type AS account_type FROM deposit_account da JOIN account ac ON da.account_number = ac.account_number JOIN customer c ON ac.customer_id = c.customer_id WHERE c.id = :customerId) wmTempTable
+        ]]>
+    <query-param name="customerId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="GetCustomerDetails">
+        <![CDATA[
+        SELECT c.id, c.customer_id, c.first_name AS firstname, c.last_name As lastname, c.phone, c.email, c.id_proof, c.resident_status, c.time_zone, c.created_at, a.city, a.address1, a.address2, a.state, a.pin FROM customer c LEFT JOIN address a ON c.address_id = a.id WHERE c.id = :customerId
+        ]]>
+    <query-param name="customerId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="GetCustomerDetails__count">
+        <![CDATA[
+        select count(*) from (SELECT c.id, c.customer_id, c.first_name AS firstname, c.last_name As lastname, c.phone, c.email, c.id_proof, c.resident_status, c.time_zone, c.created_at, a.city, a.address1, a.address2, a.state, a.pin FROM customer c LEFT JOIN address a ON c.address_id = a.id WHERE c.id = :customerId) wmTempTable
+        ]]>
+    <query-param name="customerId" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="getCustomerListData">
+        <![CDATA[
+        SELECT c.id AS customerid, c.customer_id AS customercode, c.first_name AS firstname, c.last_name AS lastname, c.phone AS phone, c.email AS email, COALESCE(SUM(b.current_balance), 0) AS totalbalance, br.name AS branchname, br_addr.city AS branchcity, COUNT(a.id) AS accountcount, m.name AS managername, m_br_addr.city AS managercity, GROUP_CONCAT(DISTINCT CONCAT(status_counts.cnt, ' ', status_counts.status) ORDER BY status_counts.status SEPARATOR ', ') AS accountstatussummary FROM customer c LEFT JOIN account a ON a.customer_id = c.customer_id LEFT JOIN balance b ON b.account_number = a.account_number LEFT JOIN branch br ON br.id = a.branch_id LEFT JOIN address br_addr ON br_addr.id = br.address_id LEFT JOIN manager m ON m.manager_id = a.manager_id LEFT JOIN branch m_br ON m_br.id = m.branch_id LEFT JOIN address m_br_addr ON m_br_addr.id = m_br.address_id LEFT JOIN (SELECT a2.customer_id, a2.status, COUNT(*) AS cnt FROM account a2 GROUP BY a2.customer_id, a2.status) status_counts ON status_counts.customer_id = c.customer_id GROUP BY c.id, c.customer_id, c.first_name, c.last_name, c.phone, c.email, br.name, br_addr.city, m.name, m_br_addr.city
+        ]]>
+    </sql-query>
+
+    <sql-query name="getCustomerListData__count">
+        <![CDATA[
+        select count(*) from (SELECT c.id AS customerid, c.customer_id AS customercode, c.first_name AS firstname, c.last_name AS lastname, c.phone AS phone, c.email AS email, COALESCE(SUM(b.current_balance), 0) AS totalbalance, br.name AS branchname, br_addr.city AS branchcity, COUNT(a.id) AS accountcount, m.name AS managername, m_br_addr.city AS managercity, GROUP_CONCAT(DISTINCT CONCAT(status_counts.cnt, ' ', status_counts.status) ORDER BY status_counts.status SEPARATOR ', ') AS accountstatussummary FROM customer c LEFT JOIN account a ON a.customer_id = c.customer_id LEFT JOIN balance b ON b.account_number = a.account_number LEFT JOIN branch br ON br.id = a.branch_id LEFT JOIN address br_addr ON br_addr.id = br.address_id LEFT JOIN manager m ON m.manager_id = a.manager_id LEFT JOIN branch m_br ON m_br.id = m.branch_id LEFT JOIN address m_br_addr ON m_br_addr.id = m_br.address_id LEFT JOIN (SELECT a2.customer_id, a2.status, COUNT(*) AS cnt FROM account a2 GROUP BY a2.customer_id, a2.status) status_counts ON status_counts.customer_id = c.customer_id GROUP BY c.id, c.customer_id, c.first_name, c.last_name, c.phone, c.email, br.name, br_addr.city, m.name, m_br_addr.city) wmTempTable
+        ]]>
+    </sql-query>
+</hibernate-mapping>

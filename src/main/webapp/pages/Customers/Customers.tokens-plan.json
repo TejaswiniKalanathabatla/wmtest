@@ -1,0 +1,25 @@
+{
+  "page": "Customers",
+  "globalOverrides": [],
+  "appearances": [
+    { "component": "container", "name": "search-panel", "purpose": "white search container with light gray inner background" },
+    { "component": "container", "name": "search-body", "purpose": "light gray form area (#F3F4F6) with rounded corners" },
+    { "component": "container", "name": "table-panel", "purpose": "white table wrapper with rounded corners, subtle shadow" },
+    { "component": "label", "name": "search-title", "purpose": "bold 'Search' label" },
+    { "component": "label", "name": "search-hint", "purpose": "muted gray hint text" },
+    { "component": "label", "name": "search-count", "purpose": "blue '0 results' link-style" },
+    { "component": "btn", "name": "cta-orange", "purpose": "primary orange search button" },
+    { "component": "btn", "name": "outlined-clear", "purpose": "outlined clear button" },
+    { "component": "btn", "name": "icon-plain", "purpose": "borderless icon-only button (chevron toggle, header icons)" },
+    { "component": "btn", "name": "row-action-plus", "purpose": "circular blue plus action button in table row" },
+    { "component": "btn", "name": "row-action-more", "purpose": "borderless more-actions ellipsis in table row" },
+    { "component": "label", "name": "page-title-bold", "purpose": "large bold Customers title in header" },
+    { "component": "label", "name": "user-name", "purpose": "user name label in header" },
+    { "component": "label", "name": "user-role", "purpose": "muted role label under user name" },
+    { "component": "container", "name": "notif-badge", "purpose": "red circular badge for notification count" },
+    { "component": "container", "name": "header-user", "purpose": "user profile wrapper" },
+    { "component": "label", "name": "status-active", "purpose": "green Active status badge" },
+    { "component": "label", "name": "status-inactive", "purpose": "gray Inactive status badge" },
+    { "component": "label", "name": "status-suspended", "purpose": "red Suspended status badge" }
+  ]
+}

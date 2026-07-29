@@ -1,0 +1,115 @@
+{
+  "aside-left": {
+    "appearances": {
+      "dark-nav": {
+        "mapping": {
+          "nav": {
+            "background": {
+              "value": "#000000ff"
+            },
+            "color": {
+              "value": "#ffffffff"
+            },
+            "item": {
+              "color": {
+                "value": "#ffffffff"
+              },
+              "icon": {
+                "color": {
+                  "value": "#ffffffff"
+                },
+                "background": {
+                  "value": "{color.inherit.value}"
+                }
+              }
+            }
+          },
+          "states": {
+            "active": {
+              "nav": {
+                "item": {
+                  "color": {
+                    "value": "#ffffffff"
+                  },
+                  "icon": {
+                    "color": {
+                      "value": "#ffffffff"
+                    },
+                    "background": {
+                      "value": "#FF6600ff"
+                    }
+                  },
+                  "anchor": {
+                    "color": {
+                      "value": "#ffffffff"
+                    }
+                  }
+                }
+              }
+            },
+            "hover": {
+              "nav": {
+                "item": {
+                  "color": {
+                    "value": "#ffffffff"
+                  },
+                  "icon": {
+                    "color": {
+                      "value": "#ffffffff"
+                    }
+                  },
+                  "anchor": {
+                    "color": {
+                      "value": "#ffffffff"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "clipped": {
+        "variantGroups": {
+          "status": {
+            "nav-drawer": {
+              "nav": {
+                "background": {
+                  "value": "{color.black.@.value}"
+                },
+                "item": {
+                  "color": {
+                    "value": "#ffffffff"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "variantGroups": {
+          "status": {
+            "nav-rail": {
+              "nav": {
+                "background": {
+                  "value": "{color.black.@.value}"
+                },
+                "item": {
+                  "color": {
+                    "value": "#ffffffff"
+                  },
+                  "indicator": {
+                    "color": {
+                      "value": "#ee885aff"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

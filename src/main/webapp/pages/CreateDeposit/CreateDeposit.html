@@ -1,0 +1,163 @@
+<wm-page name="CreateDeposit" pagetitle="Create Deposit">
+    <wm-page-params>
+        <wm-page-param name="customerId" type="string"></wm-page-param>
+        <wm-page-param name="firstName" type="string"></wm-page-param>
+        <wm-page-param name="lastName" type="string"></wm-page-param>
+    </wm-page-params>
+    <wm-header name="header" content="createDepositHeader" height="60px" class="header-app" variant="app"></wm-header>
+    <wm-content name="content">
+        <wm-page-content name="page_content" columnwidth="12">
+            <wm-wizard name="depositWizard" stepstyle="justified" class="number" cancelable="true" nextbtnlabel="Next"
+                previousbtnlabel="Back" donebtnlabel="Submit" cancelbtnlabel="Cancel"
+                on-done="Page.onWizardDone($event, widget, steps)" on-cancel="Page.onWizardCancel($event, widget)"
+                defaultstep="accountDetailsStep">
+                <!-- Step 1: Account Details -->
+                <wm-wizardstep name="accountDetailsStep" title="Account Details"
+                    on-next="Page.onAccountDetailsNext(widget, currentStep, stepIndex)">
+                    <wm-form name="accountDetailsForm" captionposition="top" method="post">
+                        <wm-container name="af_body" class="app-container-default" direction="column" gap="12"
+                            alignment="top-left" width="fill" height="hug">
+                            <wm-container name="af_row1" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_branch" key="branch" displayname="Branch" type="string"
+                                    widget="select" required="true" dataset="bind:Variables.svcListBranches.dataSet"
+                                    datafield="id" displayfield="name" placeholder="Orion Springfield"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.branchId" width="100%"
+                                    on-change="Page.onBranchChange($event, widget, newVal, oldVal)"></wm-form-field>
+                                <wm-form-field name="ff_branchCode" key="branchCode" displayname="Branch Code"
+                                    type="string" widget="text" readonly="true"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.branchCode"
+                                    width="100%"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="af_row2" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_subBranch" key="subBranch" displayname="Sub Branch"
+                                    type="string" widget="select" required="true"
+                                    dataset="bind:Variables.svcListBranches.dataSet" datafield="id" displayfield="name"
+                                    placeholder="Orion Springfield"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.subBranchId" width="50%"
+                                    on-change="Page.onSubBranchChange($event, widget, newVal, oldVal)"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="af_row3" class="app-container-default" direction="column" gap="8"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_accountType" key="accountType" displayname="Account Type"
+                                    type="string" widget="radioset" required="true"
+                                    dataset="bind:Variables.accountTypeOptions.dataSet" datafield="key"
+                                    displayfield="label"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.accountType"
+                                    itemsperrow="xs-2 sm-2 md-2 lg-2" width="100%"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="af_row4" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_mode" key="modeOfOperation" displayname="Mode of operation"
+                                    type="string" widget="select" required="true"
+                                    dataset="bind:Variables.modeOptions.dataSet" placeholder="Select mode of operation"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.modeOfOperation"
+                                    width="100%"></wm-form-field>
+                                <wm-form-field name="ff_class" key="accountClass" displayname="Account class"
+                                    type="string" widget="select" required="true"
+                                    dataset="bind:Variables.classOptions.dataSet"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.accountClass"
+                                    width="100%"></wm-form-field>
+                            </wm-container>
+                        </wm-container>
+                    </wm-form>
+                </wm-wizardstep>
+                <!-- Step 2: Customer Details -->
+                <wm-wizardstep name="customerDetailsStep" title="Customer Details">
+                    <wm-form name="customerDetailsForm" captionposition="top" method="post">
+                        <wm-container name="cf_body" class="app-container-default" direction="column" gap="12"
+                            alignment="top-left" width="fill" height="hug">
+                            <wm-container name="cf_row1" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_firstName" key="firstName" displayname="Customer First Name"
+                                    type="string" widget="text" readonly="true"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.firstName" width="100%">
+                                </wm-form-field>
+                                <wm-form-field name="ff_lastName" key="lastName" displayname="Customer Last Name"
+                                    type="string" widget="text" readonly="true"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.lastName" width="100%">
+                                </wm-form-field>
+                            </wm-container>
+                            <wm-container name="cf_row2" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_accountNumber" key="accountNumber" displayname="Account Number"
+                                    type="string" widget="select" required="true"
+                                    dataset="bind:Variables.svcListAccounts.dataSet"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.accountNumber"
+                                    on-change="Page.onAccountNumberChange($event, widget, newVal, oldVal)" width="100%"
+                                    datafield="accountNumber" displayfield="accountNumber"></wm-form-field>
+                                <wm-form-field name="ff_customerId" key="customerId" displayname="Customer ID"
+                                    type="string" widget="text" readonly="true"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.customerId"
+                                    width="100%"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="cf_row3" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_appBranch" key="applicationBranch"
+                                    displayname="Application Branch" type="string" widget="select" required="true"
+                                    dataset="bind:Variables.svcListBranches.dataSet" datafield="id" displayfield="name"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.applicationBranchId"
+                                    width="100%" on-change="Page.onAppBranchChange($event, widget, newVal, oldVal)">
+                                </wm-form-field>
+                                <wm-form-field name="ff_appBranchCode" key="appBranchCode" displayname="Branch Code"
+                                    type="string" widget="text" readonly="true"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.appBranchCode"
+                                    width="100%"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="cf_row4" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_relMgr" key="relationshipManager"
+                                    displayname="Relationship Manager" type="string" widget="select" required="true"
+                                    dataset="bind:Variables.managerOptions.dataSet" datafield="name" displayfield="name"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.relationshipManager"
+                                    width="100%"></wm-form-field>
+                                <wm-container name="td_wrap" class="app-container-default" direction="column" gap="4"
+                                    alignment="top-left" width="100%" height="hug">
+                                    <wm-form-field name="ff_termDeposit" key="termDepositAmount"
+                                        displayname="Term Deposit Amount" type="number" widget="currency"
+                                        required="true"
+                                        datavalue="bind:Variables.depositFormData.dataSet.dataValue.termDepositAmount"
+                                        width="100%"></wm-form-field>
+                                    <wm-label name="lbl_avail_balance"
+                                        caption="bind:'Available Balance: $' + (Number(Variables.selectedBalance.dataSet.dataValue.currentBalance) || 0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})"
+                                        class="label-available-balance" variant="available-balance"></wm-label>
+                                </wm-container>
+                            </wm-container>
+                            <wm-container name="cf_row5" class="app-container-default" direction="row" gap="16"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_maturityDate" key="maturityDate" displayname="Maturity Date"
+                                    type="date" widget="date" required="true"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.maturityDate"
+                                    width="50%"></wm-form-field>
+                            </wm-container>
+                            <wm-container name="cf_row6" class="app-container-default" direction="column" gap="8"
+                                alignment="top-left" width="fill" height="hug">
+                                <wm-form-field name="ff_custAccType" key="customerAccountType"
+                                    displayname="Account Type" type="string" widget="radioset" required="true"
+                                    dataset="bind:Variables.custAccountTypeOptions.dataSet" datafield="key"
+                                    displayfield="label"
+                                    datavalue="bind:Variables.depositFormData.dataSet.dataValue.customerAccountType"
+                                    itemsperrow="xs-3 sm-3 md-3 lg-3" width="100%"></wm-form-field>
+                            </wm-container>
+                        </wm-container>
+                    </wm-form>
+                </wm-wizardstep>
+                <wm-wizardaction name="depositWizardAction">
+                    <wm-button class="btn-default app-wizard-cancel" type="button" caption="Cancel"
+                        show="bind:cancelable()" on-click="Actions.goToPage_CustomerDetails.invoke()"
+                        name="btnWizardCancel"></wm-button>
+                    <wm-button class="btn-default app-wizard-previous" type="button" iconclass="wi wi-chevron-left"
+                        caption="Back" show="bind:hasPreviousStep()" on-click="previous()"
+                        disabled="bind:disablePrevious()" name="btnWizardPrevious"></wm-button>
+                    <wm-button class="btn-primary app-wizard-next" type="button" iconclass="wi wi-chevron-right"
+                        iconposition="right" caption="Next" show="bind:hasNextStep()"
+                        on-click="Widgets.depositWizard.next()" disabled="false" name="btnWizardNext"></wm-button>
+                    <wm-button class="btn-success app-wizard-done" type="button" iconclass="wi wi-check"
+                        caption="Submit" show="bind:hasNoNextStep()" on-click="Page.onWizardDone($event, widget, [])"
+                        disabled="bind:disableDone()" name="btnWizardDone"></wm-button>
+                </wm-wizardaction>
+            </wm-wizard>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

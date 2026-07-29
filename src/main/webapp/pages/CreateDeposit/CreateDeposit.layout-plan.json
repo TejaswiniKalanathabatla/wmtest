@@ -1,0 +1,67 @@
+{
+  "page": "CreateDeposit",
+  "widgetTree": [
+    {
+      "widget": "wm-container",
+      "name": "root",
+      "props": { "direction": "row", "gap": "0", "alignment": "top-left", "width": "fill", "height": "fill" },
+      "children": [
+        {
+          "widget": "wm-container",
+          "name": "left_panel",
+          "props": { "class": "container-wizard-left-panel", "variant": "wizard-left-panel", "direction": "column", "gap": "24", "alignment": "top-left", "width": "320px", "height": "fill", "padding": "40px" },
+          "children": [
+            {
+              "widget": "wm-container",
+              "name": "bank_icon_wrap",
+              "props": { "class": "container-bank-icon-circle", "variant": "bank-icon-circle", "direction": "row", "gap": "0", "alignment": "middle-center", "width": "72px", "height": "72px" },
+              "children": [
+                { "widget": "wm-icon", "name": "bank_icon", "props": { "iconclass": "fa fa-university", "iconsize": "36px" } }
+              ]
+            },
+            { "widget": "wm-label", "name": "wizard_title", "props": { "caption": "Open Deposit Account", "class": "label-wizard-title-xl", "variant": "wizard-title-xl" } }
+          ]
+        },
+        {
+          "widget": "wm-wizard",
+          "name": "deposit_wizard",
+          "props": { "class": "number", "cancelable": "true", "nextbtnlabel": "Next", "donebtnlabel": "Submit", "cancelbtnlabel": "Cancel", "defaultstepindex": "0" },
+          "children": [
+            {
+              "widget": "wm-wizardstep",
+              "name": "step_account_details",
+              "props": { "title": "Account Details", "iconclass": "wi wi-check" }
+            },
+            {
+              "widget": "wm-wizardstep",
+              "name": "step_customer_details",
+              "props": { "title": "Customer Details", "iconclass": "wi wi-person" }
+            },
+            {
+              "widget": "wm-wizardstep",
+              "name": "step_interest_details",
+              "props": { "title": "Interest Details", "iconclass": "wi wi-info" }
+            },
+            {
+              "widget": "wm-wizardstep",
+              "name": "step_review",
+              "props": { "title": "Review & Submit", "iconclass": "wi wi-done" }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": [
+    { "name": "depositFormData", "type": "entry", "isList": false, "boundWidget": "deposit_wizard" },
+    { "name": "branchOptions", "type": "entry", "isList": true, "boundWidget": "ff_branch" },
+    { "name": "accountOptions", "type": "entry", "isList": true, "boundWidget": "ff_accountNumber" },
+    { "name": "modeOptions", "type": "string", "isList": true, "boundWidget": "ff_mode" },
+    { "name": "classOptions", "type": "string", "isList": true, "boundWidget": "ff_class" },
+    { "name": "accountTypeOptions", "type": "entry", "isList": true, "boundWidget": "ff_accountType" },
+    { "name": "custAccountTypeOptions", "type": "entry", "isList": true, "boundWidget": "ff_custAccType" },
+    { "name": "managerOptions", "type": "entry", "isList": true, "boundWidget": "ff_relMgr" },
+    { "name": "selectedAccount", "type": "entry", "isList": false, "boundWidget": "customerDetailsForm" },
+    { "name": "selectedBalance", "type": "entry", "isList": false, "boundWidget": "ff_termDeposit" }
+  ]
+}

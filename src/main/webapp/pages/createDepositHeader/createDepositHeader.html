@@ -1,0 +1,28 @@
+<wm-partial name="createDepositHeader" type="header">
+    <wm-container name="header_layout" class="app-container-default" variant="default" direction="row" gap="auto"
+        alignment="center" width="fill" height="fill" padding="0px 20px">
+        <!-- LEFT: Back arrow + Page title -->
+        <wm-container name="header_left" class="app-container-default" variant="default" direction="row" gap="8"
+            alignment="middle-left" width="hug" height="hug">
+            <wm-button name="btn_back" iconclass="wi wi-arrow-back" class="btn-icon-plain" variant="icon-plain"
+                type="button" on-click="Actions.goToPage_CustomerDetails.invoke()"></wm-button>
+            <wm-label name="lbl_page_title" caption="Create Deposit" class="header-page-title" fontweight="bold">
+            </wm-label>
+        </wm-container>
+        <!-- RIGHT: Actions + User -->
+        <wm-container name="header_right" class="app-container-default" variant="default" direction="row" gap="16"
+            alignment="middle-right" width="hug" height="hug">
+            <wm-container name="user_info" class="app-container-default" variant="header-user" direction="row" gap="8"
+                alignment="middle-left" padding="4px 8px">
+                <wm-picture name="user_avatar" shape="circle" width="32px" height="32px" variant="avatar-round">
+                </wm-picture>
+                <wm-container name="user_text" class="app-container-default" variant="default" direction="column"
+                    gap="0" alignment="top-left">
+                    <wm-label name="lbl_user_name" caption="bind:loggedInUser.name" variant="user-name"></wm-label>
+                    <wm-label name="lbl_user_role" caption="bind:loggedInUser.userRoles[0]" variant="user-role">
+                    </wm-label>
+                </wm-container>
+            </wm-container>
+        </wm-container>
+    </wm-container>
+</wm-partial>

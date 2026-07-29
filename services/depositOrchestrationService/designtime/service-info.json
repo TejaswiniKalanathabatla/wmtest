@@ -1,0 +1,8 @@
+{
+  "id" : "depositOrchestrationService",
+  "type" : "JavaService",
+  "packageNames" : [ "com.wavemaker.teller_app.depositorchestrationservice" ],
+  "serviceClassNames" : [ "com.wavemaker.teller_app.depositorchestrationservice.DepositOrchestrationService" ],
+  "title" : "depositOrchestrationService",
+  "mockEnabled" : false
+}

@@ -1,0 +1,94 @@
+# =====================================================================
+# Azure Pipelines - WaveMaker app -> Azure App Service (WAR deploy)
+# Runtime target: Linux, Java 17, Apache Tomcat 10.1
+# Source: GitHub repo (WaveMaker Maven project)
+# =====================================================================
+
+# ---- FILL THESE IN --------------------------------------------------
+variables:
+  azureServiceConnection: 'wm-azure-connection'   # name of your Azure service connection in DevOps
+  appName: 'tets-wm'                               # your App Service name
+  resourceGroup: 'test-learn'                      # your resource group
+  buildProfile: 'deployment'                       # WaveMaker deployment profile
+  javaVersion: '17'
+  nodeVersion: '22.18.0'
+# ---------------------------------------------------------------------
+
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+# =====================================================================
+# STAGE 1 - BUILD: compile + package the WaveMaker app into a WAR
+# =====================================================================
+- stage: Build
+  displayName: 'Build WaveMaker WAR'
+  jobs:
+    - job: build
+      displayName: 'Maven build'
+      steps:
+        - task: JavaToolInstaller@0
+          displayName: 'Set up Java 17'
+          inputs:
+            versionSpec: '$(javaVersion)'
+            jdkArchitectureOption: 'x64'
+            jdkSourceOption: 'PreInstalled'
+
+        - task: NodeTool@0
+          displayName: 'Set up Node.js'
+          inputs:
+            versionSpec: '$(nodeVersion)'
+
+        - task: Maven@4
+          displayName: 'mvn clean package'
+          inputs:
+            mavenPomFile: 'pom.xml'
+            goals: 'clean package'
+            options: '-P$(buildProfile) -DskipTests'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '$(javaVersion)'
+
+        - task: CopyFiles@2
+          displayName: 'Collect WAR'
+          inputs:
+            contents: '**/target/*.war'
+            targetFolder: '$(Build.ArtifactStagingDirectory)'
+            flattenFolders: true
+
+        - task: PublishBuildArtifacts@1
+          displayName: 'Publish WAR artifact'
+          inputs:
+            pathToPublish: '$(Build.ArtifactStagingDirectory)'
+            artifactName: 'war'
+
+# =====================================================================
+# STAGE 2 - DEPLOY: push the WAR to Azure App Service
+# =====================================================================
+- stage: Deploy
+  displayName: 'Deploy to App Service'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+    - deployment: deploy
+      displayName: 'Deploy WAR'
+      environment: 'wm-training'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: current
+                artifact: 'war'
+
+              - task: AzureWebApp@1
+                displayName: 'Deploy WAR to App Service'
+                inputs:
+                  azureSubscription: '$(azureServiceConnection)'
+                  appType: 'webAppLinux'
+                  appName: '$(appName)'
+                  resourceGroupName: '$(resourceGroup)'
+                  package: '$(Pipeline.Workspace)/war/*.war'

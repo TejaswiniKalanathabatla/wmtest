@@ -7,7 +7,7 @@
 # ---- FILL THESE IN --------------------------------------------------
 variables:
   azureServiceConnection: 'wm-azure-connection'   # name of your Azure service connection in DevOps
-  appName: 'tets-wm'                               # your App Service name
+  appName: 'test-wm'                               # your App Service name
   resourceGroup: 'test-learn'                      # your resource group
   buildProfile: 'deployment'                       # WaveMaker deployment profile
   javaVersion: '17'
